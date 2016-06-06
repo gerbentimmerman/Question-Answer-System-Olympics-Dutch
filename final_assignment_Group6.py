@@ -11,128 +11,152 @@ import sys
 from lxml import etree
 from SPARQLWrapper import SPARQLWrapper, JSON
 
+def alpino_parse(sent, host='zardoz.service.rug.nl', port=42424):
+	s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+	s.connect((host,port))
+	sent = sent + "\n\n"
+	sentbytes= sent.encode('utf-8')
+	s.sendall(sentbytes)
+	bytes_received= b''
+	while True:
+		byte = s.recv(8192)
+		if not byte:
+			break
+		bytes_received += byte
+		#print(bytes_received.decode(’utf-8’), file=sys.stderr)
+	xml = etree.fromstring(bytes_received)
+	return xml
+
 def print_example_queries():
-    questions = ["Wanneer begonnen de Olympische Winterspelen 2014?",
-              "In welke stad werden de Olympische Zomerspelen 2008 gehouden?",
-              "Hoe lang is Usain Bolt?",
-              "Wat is de naam van de trainer van Usain Bolt?",
-              "Welk motto had de Olympische Zomerspelen 2008?",
-              "Op welke datum was de afsluiting van de Olympische Zomerspelen 2008?",
-              "Wat is de bijnaam van Epke Zonderland?",
-              "Hoe heet de fakkeldrager op de Olympische Winterspelen 2010?",
-              "Wie heeft de Olympische Winterspelen 2014 geopend?",
-              "Wat is de naam van de ploeg van Sven Kramer?"]
-    for question in questions:
-        print(question)
+	print("Wanneer begonnen de Olympische Zomerspelen 2012?")
+	print("Wat is de lengte van Usain Bolt?")
+	print("Hoe lang is Usain Bolt?")
+	print("Hoe zwaar is Marleen Veldhuis?")
+	print("Op welke datum sloten de Olympische Zomerspelen 2012?")
+	print("Wie is de trainer van Epke Zonderland?")
+	print("Welk gewicht heeft Henk Grol?")
+	print("Aan welk onderdeel neemt Henk Grol deel?")
+	print("Door wie wordt Usain Bolt getraind?")
+	print("Wat is de geboorteplaats van Marleen Veldhuis?")
+	print("In welke plaats is Epke Zonderland geboren?\n")
 
 def main(argv):
-    print_example_queries()
-    print()
-    for line in sys.stdin:
-        line = line.rstrip()
-        answer = create_and_fire_query(line)
-        print(answer + "\n")
-
-def create_and_fire_query(question):
-    if question == "":
-        sys.exit("Vul alsjeblieft een vraag in aan de hand van de voorbeeldzinnen.")
-    getname = getName(question)
-    getprop = getProp(question)
-    sparql = SPARQLWrapper("http://nl.dbpedia.org/sparql")
-    pairCounts = open('pairCounts')
-    sortlijst = []
-    for line in pairCounts:
-        items = line.split("\t")
-        if getname == items[0]:
-            sortlijst.append([items[0], items[1], items[2].rstrip("\n")])
-    sortlijst.sort(key=lambda x: int(x[2]))
-    sortlijst.reverse()
-
-    if sortlijst == []:
-        sys.exit("Helaas kan deze zoekopdracht niet gevonden worden")
-    else:
-        Y = sortlijst[0][1]
-
-    X = get_property(getprop)
-
-    query = """ select ?antwoord
-            WHERE {
-            <""" + Y + """>""" + X +""" ?antwoord
-            }"""
-    sparql.setQuery(query)
-    sparql.setReturnFormat(JSON)
-    results = sparql.query().convert()
-    for result in results["results"]["bindings"]:
-        for arg in result:
-            answer = arg + " : " + result[arg]["value"]
-        return answer
-
-def getName(question):
-    deeleigenlist = []
-    xml = alpino_parse(question)
-    names = xml.xpath('//node[@spectype = "deeleigen"]')
-    for name in names:
-        deeleigenlist.append(tree_yield(name))
-    deeleigen = " ".join(deeleigenlist)
-    return deeleigen
-
-def getProp(question):
-    propertylist = []
-    xml = alpino_parse(question)
-    properties = xml.xpath('//node[@rel = "hd"]')
-    for property in properties:
-        propertylist.append(tree_yield(property))
-    return propertylist
-
-def get_property(proplist):
-    for prop in proplist:
-        if prop == "startdatum" or prop == "begindatum" or prop == "start" or prop == "begint" or prop =="startte" or prop == "begon" or prop == "startten" or prop == "begonnen":
-            uri = "prop-nl:opening"
-        elif prop == "plaats" or prop == "stad" or prop == "locatie" or prop == "plek":
-            uri = "prop-nl:plaats"
-        elif prop == "lengte" or prop == "grootte" or prop == "hoogte" or prop == "lang":
-            uri = "prop-nl:lengte"
-        elif prop == "trainer" or prop == "coach" or prop == "oefenmeester" or prop == "getraind":
-            uri = "prop-nl:trainer"
-        elif prop == "motto" or prop == "leus" or prop == "slogan":
-            uri = "prop-nl:motto"
-        elif prop == "sluitingsdatum" or prop == "einddatum" or prop == "afsluiting" or prop == "sloot" or prop == "sloten" or prop == "eindigden":
-            uri = "prop-nl:sluiting"
-        elif prop == "bijnaam" or prop == "nickname" or prop == "alias":
-            uri = "prop-nl:bijnaam"
-        elif prop == "fakkeldrager" or prop == "vlamdrager" or prop == "vuurdrager" or prop == "vuur":
-            uri = "prop-nl:vlam"
-        elif prop == "opener" or prop == "ziener" or prop == "geopend" or prop == "opende":
-            uri = "prop-nl:opener"
-        elif prop == "ploeg" or prop == "team" or prop == "squad" or prop == "groep":
-            uri = "dbpedia-owl:team"
-        elif prop =="deelnemers" or prop == "atleten" or prop == "sporters":
-            uri = "prop-nl:atleten"
-    return uri
-
+	print_example_queries()
+	for line in sys.stdin:
+		stringY=returnName(line)
+		Proplist=returnProp(line)
+		answer = create_and_fire_query(stringY,Proplist)
+		print(answer)
+		
+def returnName(line):
+	Ylist=[]
+	Ylist2=[]
+	Ylist3=[]
+	line = line.rstrip()
+	xml = alpino_parse(line)
+	names = xml.xpath('//node[@spectype="deeleigen"] ')
+	names2= xml.xpath('//node[@neclass="year"]')
+	if names==[]:
+		names3=xml.xpath('//node[ @cat="np" and @rel="obj1" and node[@rel="det"]]')
+		for name in names3:	
+			Ylist3.append(tree_yield(name))
+			stringY3= ' '.join(Ylist3)
+	else:			
+		for name in names:
+			Ylist.append(tree_yield(name))
+		for name in names2:
+			Ylist2.append(tree_yield(name))	
+			stringY= ' '.join(Ylist)
+			stringY2= ' '.join(Ylist2)
+			stringY3= stringY+" "+stringY2
+	stringY4=stringY3.rstrip()
+	stringY5=stringY4.lstrip("het ")
+	stringY6=stringY5.lstrip("de ")
+	print(stringY6)
+	return stringY6
+	
+def returnProp(line):
+	Proplist=[]
+	line = line.rstrip()
+	xml = alpino_parse(line)
+	names = xml.xpath('//node[@rel="hd"]')
+	for name in names :
+		Proplist.append(tree_yield(name))
+	return Proplist
+	
 def tree_yield(xml):
-    leaves = xml.xpath('descendant-or-self::node[@word]')
-    words = []
-    for l in leaves:
-        words.append(l.attrib["word"])
-    return " ".join(words)
+	leaves = xml.xpath('descendant-or-self::node[@word]')
+	words = []
+	for l in leaves :
+		words.append(l.attrib["word"])
+	return " ".join(words)	
+			
+		
+def create_and_fire_query(stringY,Proplist):
+	sparql = SPARQLWrapper("http://nl.dbpedia.org/sparql")	
+	File=open('pairCounts')
+	maxlist=[]
+	for line in File:
+		elements=line.split("\t")
+		if stringY == elements[0]:
+			maxlist.append([elements[0],elements[1],elements[2].rstrip("\n")])
+	maxlist.sort(key=lambda x: int(x[2]), reverse=True)
+	if maxlist == []:
+		sys.exit("Error!, "+stringY+" wordt niet herkend door DBpedia")
+	else:	
+		link=maxlist[0][1]
+		
+	for X in Proplist:
+	
+		if X == "startdatum" or X=="begindatum" or X=="begonnen" or X=="beginnen":
+			prop="dbpedia-owl:startDate"
+			
+		elif X == "plaats" or X=="locatie" or X=="plek" or X=="Waar":
+			prop="dbpedia-owl:location"
+			
+		elif X == "lengte" or X=="hoogte" or X=="grootte" or X=="lang":
+			prop="prop-nl:lengte"
+			
+		elif X == "coach":
+			prop="prop-nl:bondscoach"	
+			
+		elif X == "trainer" or X=="oefenmeester" or X=="leermeester" or X=="getraind":
+			prop="prop-nl:trainer"
+			
+		elif X == "coach":
+			prop="prop-nl:bondscoach"
+   		
+		elif X == "motto" or X=="spreuk" or X=="slogan" or X=="slagzin" or X=="leus" or X=="leuze" or X=="kernspreuk":
+			prop="prop-nl:motto"
 
-# parse input sentence and return alpino output as an xml element tree
-def alpino_parse(sent, host='zardoz.service.rug.nl', port=42424):
-    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.connect((host,port))
-    sent = sent + "\n\n"
-    sentbytes= sent.encode('utf-8')
-    s.sendall(sentbytes)
-    bytes_received= b''
-    while True:
-        byte = s.recv(8192)
-        if not byte:
-            break
-        bytes_received += byte
-    # print(bytes_received.decode('utf-8'), file=sys.stderr)
-    xml = etree.fromstring(bytes_received)
-    return xml
+		elif X == "sluiting" or X=="einddatum" or X=="sluitdatum" or X=="eind" or X=="sloten":
+			prop="dbpedia-owl:endDate"		
+			
+		elif X == "gewicht" or X=="massa" or X=="zwaarte" or X=="zwaar":
+			prop="prop-nl:gewicht"
+			
+		elif X == "bijnaam" or X=="alias" or X=="nickname":
+			prop="prop-nl:bijnaam"
+			
+		elif X == "onderdeel" or X=="discipline" or X=="gebied" or X=="sectie" or X=="domein" or X=="vakgebied":
+			prop="prop-nl:onderdeel"
+			
+		elif X == "geboorteplaats" or X == "bakermat" or X == "geboren" or X == "Waar":
+			prop="prop-nl:geboorteplaats"						
+									
+	sparql.setQuery("""
+	SELECT ?antwoord
+	WHERE {
+	<"""+link+""">"""+ prop + """ ?antwoord.
+	} """)
+	
+	sparql.setReturnFormat(JSON)
+	results = sparql.query().convert()
+	for result in results["results"]["bindings"]:
+		for arg in result :
+			answer = arg + " : " + result[arg]["value"]
+			return answer
+					
+if __name__ == "__main__":
+	main(sys.argv)
 
-if __name__ == '__main__':
-    main(sys.argv)
