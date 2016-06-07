@@ -39,16 +39,25 @@ def print_example_queries():
 	print("Door wie wordt Usain Bolt getraind?")
 	print("Wat is de geboorteplaats van Marleen Veldhuis?")
 	print("In welke plaats is Epke Zonderland geboren?\n")
+	
+def leesbestand():
+	open(olympics_questions1.txt)	
 
 def main(argv):
 	print_example_queries()
 	for line in sys.stdin:
-		stringY=returnName(line)
+		stringY=returnName2(line)
 		Proplist=returnProp(line)
 		answer = create_and_fire_query(stringY,Proplist)
 		print(answer)
+
+#def kiesfuncties():
+	#soortvraag= xml.xpath('//node[ @rel="whd"] ')
+	#if soortvraag =="Wanneer" or soortvraag == "Sinds wanneer":
 		
-def returnName(line):
+	#if soortvraag =="Wie" or soortvraag =="Wat":
+			
+def returnName(line): #wie/wat vragen
 	Ylist=[]
 	Ylist2=[]
 	Ylist3=[]
@@ -60,20 +69,49 @@ def returnName(line):
 		names3=xml.xpath('//node[ @cat="np" and @rel="obj1" and node[@rel="det"]]')
 		for name in names3:	
 			Ylist3.append(tree_yield(name))
-			stringY3= ' '.join(Ylist3)
+		stringY3= ' '.join(Ylist3)
 	else:			
 		for name in names:
 			Ylist.append(tree_yield(name))
 		for name in names2:
 			Ylist2.append(tree_yield(name))	
-			stringY= ' '.join(Ylist)
-			stringY2= ' '.join(Ylist2)
-			stringY3= stringY+" "+stringY2
+		stringY= ' '.join(Ylist)
+		stringY2= ' '.join(Ylist2)
+		stringY3= stringY+" "+stringY2
 	stringY4=stringY3.rstrip()
-	stringY5=stringY4.lstrip("het ")
-	stringY6=stringY5.lstrip("de ")
+	stringY5=stringY4.replace("het ","")
+	stringY6=stringY5.replace("de ","")
 	print(stringY6)
 	return stringY6
+	
+	
+	
+def returnName2(line): #Wanneer of sindswanneer
+	Ylist=[]
+	Ylist2=[]
+	Ylist3=[]
+	line = line.rstrip()
+	xml = alpino_parse(line)
+	names = xml.xpath('//node[@word="Worstelen" or @word="hoogspringen" or @word="basketbal" or @word="taekwondo" or @word="kogelstoten" or @word="korfbal" or @word="judo" or @word="boogschieten"]')
+	if names==[]:
+		names2=xml.xpath('//node[@spectype="deeleigen"]')
+		names3= xml.xpath('//node[@neclass="year"]')
+		for name in names2:
+			Ylist2.append(tree_yield(name))
+		for name in names3:	
+			Ylist3.append(tree_yield(name))
+		stringY= ' '.join(Ylist2)
+		stringY2= ' '.join(Ylist3)
+		stringY3= stringY+" "+stringY2	
+	else:			
+		for name in names:
+			Ylist.append(tree_yield(name))
+		stringY3= ' '.join(Ylist)		
+	stringY4=stringY3.rstrip()
+	stringY5=stringY4.replace("het ","")
+	stringY6=stringY4.replace("de ","")
+	print(stringY6)
+	return stringY6	
 	
 def returnProp(line):
 	Proplist=[]
@@ -105,6 +143,7 @@ def create_and_fire_query(stringY,Proplist):
 		sys.exit("Error!, "+stringY+" wordt niet herkend door DBpedia")
 	else:	
 		link=maxlist[0][1]
+		print(link)
 		
 	for X in Proplist:
 	
