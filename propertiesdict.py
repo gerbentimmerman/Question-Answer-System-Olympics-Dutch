@@ -17,20 +17,20 @@ def wie_wat_dictionary(eigenschap):
         'prop-nl:wrman': ["wereldrecord"],
         'prop-nl:landen': ["aantal"],
         'dbpedia-owl:wikiPageExternalLink': ["website"],
-        'prop-nl:geboortestad': ["geboorteplaats"]
+		'prop-nl:geboortestad': ["geboorteplaats"]
     }
-	dictionary[eigenschap]
+	
 
     wanneer= {
-        'prop-nl:eerste': ["eerste"],
-        'prop-nl:geboortedatum': ["geboren"],
-        'prop-nl:vorige': ["vorige","laatste","voor"],
-        'prop-nl:volgende': ["volgende","eerstvolgende","aankomende","komende","na"],
-	'prop-nl:sluiting': ["sluiting","afsluiting","eindceremonie","einde","eind","eindigden"],
-	'prop-nl:opening': ["start","begin","begonnen","opening","beginnen"],
-	'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
-        'prop-nl:overleden': ["overleden","overleden"],
-	'prop-nl:gesticht': ["gesticht"]
+		'prop-nl:eerste': ["eerste"],
+		'prop-nl:geboortedatum': ["geboren"],
+		'prop-nl:vorige': ["vorige","laatste","voor"],
+		'prop-nl:volgende': ["volgende","eerstvolgende","aankomende","komende","na"],
+		'prop-nl:sluiting': ["sluiting","afsluiting","eindceremonie","einde","eind","eindigden"],
+		'prop-nl:opening': ["start","begin","begonnen","opening","beginnen"],
+		'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
+		'prop-nl:overleden': ["overleden","overleden"],
+		'prop-nl:gesticht': ["gesticht"]
 
     }
     
@@ -39,18 +39,18 @@ def wie_wat_dictionary(eigenschap):
         'prop-nl:geboortedatum': ["geboren"],
         'prop-nl:vorige': ["vorige","laatste","voor","laatst","voorgaand"],
         'prop-nl:volgende': ["volgende","eerstvolgende","aankomende","komende","na"],
-	'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
-	'dbpedia-owl:flagBearer of': ["vlaggendrager"],
-	'prop-nl:zilverNaam of': ["zilver","tweede"],
-	'prop-nl:goudNaam of': ["goud","eerste"],
-	'prop-nl:soort': ["seizoen"],
-	'prop-nl:jaar': ["jaar","jaartal","jaren","jaartallen"],
-	'prop-nl:discipline': ["sport","discipline","disciplines"],
-	'prop-nl:plaats': ["stad","stadje","plaats","locatie","steden","locaties"],
-	'dbpedia-owl:location': ["land"],
-	'prop-nl:area': ["regio","gebied"],
-	'prop-nl:coach': ["coach","trainer"],
-        'prop-nl:motto': ["motto"]
+		'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
+		'dbpedia-owl:flagBearer of': ["vlaggendrager"],
+		'prop-nl:zilverNaam of': ["zilver","tweede"],
+		'prop-nl:goudNaam of': ["goud","eerste"],
+		'prop-nl:soort': ["seizoen"],
+		'prop-nl:jaar': ["jaar","jaartal","jaren","jaartallen"],
+		'prop-nl:discipline': ["sport","discipline","disciplines"],
+		'prop-nl:plaats': ["stad","stadje","plaats","locatie","steden","locaties"],
+		'dbpedia-owl:location': ["land"],
+		'prop-nl:area': ["regio","gebied"],
+		'prop-nl:coach': ["coach","trainer"],
+		'prop-nl:motto': ["motto"]
     }
 
 def findproperty(searchwordlist):
