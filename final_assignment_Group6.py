@@ -41,13 +41,26 @@ def print_example_queries():
 	print("In welke plaats is Epke Zonderland geboren?\n")
 	
 def leesbestand():
-	open(olympics_questions1.txt)	
-
+	f= open("test.txt", "r")
+	filedata = f.read()	
+	newdata = filedata.replace(" spelen"," Spelen")
+	newdata2 = newdata.replace(" olympisch"," Olympisch")
+	newdata3 = newdata2.replace(" zomerspelen"," Zomerspelen")
+	newdata4 = newdata3.replace(" winterspelen"," Winterspelen")
+	ff = open("beteretest.txt",'w')
+	ff.write(newdata4)
+	ff.close()
+	
+	
 def main(argv):
+	#leesbestand()
+	#f=open("beteretest.txt", "r")
 	print_example_queries()
 	for line in sys.stdin:
-		stringY=returnName2(line)
-		Proplist=returnProp(line)
+		#zin=line.split("\t")
+		#print(zin[1])
+		stringY=returnName2(line) #zin[1]
+		Proplist=returnProp(line) #zin[1]
 		answer = create_and_fire_query(stringY,Proplist)
 		print(answer)
 
@@ -56,6 +69,8 @@ def main(argv):
 	#if soortvraag =="Wanneer" or soortvraag == "Sinds wanneer":
 		
 	#if soortvraag =="Wie" or soortvraag =="Wat":
+			
+	#//node[ @postag="BW()" and @word="Hoe"] hoe zinnen
 			
 def returnName(line): #wie/wat vragen
 	Ylist=[]
@@ -143,7 +158,6 @@ def create_and_fire_query(stringY,Proplist):
 		sys.exit("Error!, "+stringY+" wordt niet herkend door DBpedia")
 	else:	
 		link=maxlist[0][1]
-		print(link)
 		
 	for X in Proplist:
 	
@@ -198,4 +212,3 @@ def create_and_fire_query(stringY,Proplist):
 					
 if __name__ == "__main__":
 	main(sys.argv)
-
