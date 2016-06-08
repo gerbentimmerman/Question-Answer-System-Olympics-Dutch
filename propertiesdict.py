@@ -58,6 +58,8 @@ def findproperty(searchwordlist):
         for property,words in wie_wat_dictionary.items():
             for word in wie_wat_dictionary[property]:
                 if searchword == word:
+                    propertylist = []
+                    propertylist.append(property)
                     print(property)
 
 
