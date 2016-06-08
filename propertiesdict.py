@@ -60,7 +60,7 @@ def findproperty(searchwordlist):
                 if searchword == word:
                     propertylist = []
                     propertylist.append(property)
-                    print(property)
+                    return propertylist
 
 
 if __name__ == '__main__':
