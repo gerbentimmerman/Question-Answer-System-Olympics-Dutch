@@ -169,12 +169,12 @@ def tree_yield(xml):
 	return " ".join(words)	
 	
 def findproperty(searchwordlist,Keuzewoord):
+	propertylist = []
 	rightdict = propertiesdict.dictfinder(Keuzewoord)
 	for searchword in searchwordlist:
 		for property,words in rightdict.items():
 			for word in rightdict[property]:
 				if searchword == word:
-					propertylist = []
 					propertylist.append(property)
 	return propertylist		
 		

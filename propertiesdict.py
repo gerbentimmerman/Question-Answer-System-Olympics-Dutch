@@ -88,12 +88,32 @@ def dictfinder(Keuzewoord):
 		'prop-nl:gewicht' : ["zwaar"]
 	}
 	
+	hoeveel_dictionary = {
+		'prop-nl:brons' : ["bronzen","bronze"],
+		'prop-nl:zilver' : ["zilver","zilveren"],
+		'prop-nl:goud' : ["goud","gouden"],
+		'prop-nl:atleten': ["atleten"],
+		'prop-nl:totaal': ["medailles"],
+		'prop-nl:landen': ["landen"],
+		'prop-nl:capaciteit':["zitplaatsen"],
+		'prop-nl:sport':["zomersporten","sporten","sport","wintersporten"],
+		'prop-nl:atleten':["deelnemers","mee","sporters","spelers"],
+		'prop-nl:vlam':["fakkeldragers"],
+		'prop-nl:leden':["leden"],
+		'prop-nl:evenementen':["sportevenementen","evenementen"],
+		'prop-nl:spelen':["Olympiade"],
+		'prop-nl:inwoners':["inwoners"],
+		'prop-nl:kampioenschappen of':["onderdelen"]
+	}
+	
 	if Keuzewoord == 'wat' or Keuzewoord == 'wie':
 		return wie_wat_dictionary
 	elif Keuzewoord == 'wanneer':
 		return wanneer_dictionary
 	elif Keuzewoord == 'hoe':
 		return hoe_dictionary
+	elif Keuzewoord == 'hoeveel':
+		return hoeveel_dictionary
 
 if __name__ == '__main__':
     main(sys.argv)
