@@ -165,9 +165,10 @@ def create_and_fire_query(stringY,Proplist):
 			for item in range(0,2):
 				wikipage = wikipedia.page(wikisearch[item])
 				url = wikipage.url
+				answer = wikipage.title
 				dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
 				urllist.append(dblink)
-			print(urllist)	
+
 		#except wikipedia.exceptions.DisambiguationError as error:
 			#link=url[0]
 			#urllist.append(link)	
@@ -183,15 +184,14 @@ def create_and_fire_query(stringY,Proplist):
 		except:
 			urlstring=stringY6.replace(" ","_")
 			link="http://nl.dbpedia.org/page/"+urlstring
-			urllist.append(link)				
-				
+			urllist.append(link)					
 				
 	else:	
 		link=maxlist[0][1]
 		urllist.append(link)
 	
 	for link in urllist:
-		print(link)	
+		print(link)
 		for X in Proplist:
 		
 			if X == "startdatum" or X=="begindatum" or X=="begonnen" or X=="beginnen":
@@ -232,20 +232,21 @@ def create_and_fire_query(stringY,Proplist):
 				
 			elif X == "stadion":
 				prop="prop-nl:naamStadion"							
-										
+						
 		sparql.setQuery("""
 		SELECT ?antwoord
 		WHERE {
-		<"""+link+""">"""+ prop + """ ?antwoord.
+		<"""+link+"""> """+ prop + """ ?antwoord.
 		} """)
 		
 		sparql.setReturnFormat(JSON)
 		results = sparql.query().convert()
+		print(results)
 		for result in results["results"]["bindings"]:
 			for arg in result :
 				answer = arg + " : " + result[arg]["value"]
 				answerlist.append(answer)
-
+		
 	return answerlist
 					
 if __name__ == "__main__":
