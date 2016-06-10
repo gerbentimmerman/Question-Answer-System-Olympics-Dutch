@@ -123,7 +123,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:soort' : ["seizoen"],
 		'prop-nl:jaar' : ["jaar"],
 		'prop-nl:vlaggendrager' : ["vlaggendrager","vlaggendragers"],
-		'is dbpedia-owl:goldMedalist of:' ["won gouden medialle"],
+		'is dbpedia-owl:goldMedalist of' : ["gouden"],
 		'prop-nl:rugnummer' : ["rugnummer"],
 		'prop-nl:motto' : ["motto"],
 		'is prop-nl:jury of' : ["rol"],
