@@ -220,7 +220,8 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 		urllist.append(link)
 	
 	for link in urllist:
-		for item in propertieslist:		
+		for item in propertieslist:	
+			print(item)	
 			sparql.setQuery("""
 			SELECT ?antwoord
 			WHERE {
