@@ -62,6 +62,7 @@ def main(argv):
 		#print(zin[1])
 		stringY=returnName(line) #zin[1]
 		Proplist=returnProp(line) #zin[1]
+		Keuzewoord = returnKeuzewoord(line)
 		answer = create_and_fire_query(stringY,Proplist)
 		print(answer)
 
@@ -141,15 +142,90 @@ def returnProp(line):
 		Proplist.append(tree_yield(name))
 	return Proplist
 	
+def returnKeuzewoord(line):
+	line = line.rstrip()
+	xml = alpino_parse(line)
+	names = xml.xpath('//node[@rel="whd"]')
+	for name in names :
+		Keuzewoordlist = tree_yield(name).split()
+	print('Dit is de keuzewoordlist',Keuzewoordlist)
+	if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
+		Keuzewoord = 'wanneer'
+	elif 'Wat' in Keuzewoordlist or 'wat' in Keuzewoordlist:
+		Keuzewoord = 'wat'
+	elif 'Wie' in Keuzewoordlist or 'wie' in Keuzewoordlist:
+		Keuzewoord = 'wie'
+	elif 'Welk' in Keuzewoordlist or 'welk' in Keuzewoordlist or 'Welke' in Keuzewoordlist or 'welke' in Keuzewoordlist:
+		Keuzewoord = 'welke'
+	elif 'Waar' in Keuzewoordlist or 'waar' in Keuzewoordlist:
+		Keuzewoord = 'waar'
+	elif 'Hoe' in Keuzewoordlist or 'hoe' in Keuzewoordlist:
+		Keuzewoord = 'hoe' 
+	print('Het keuzewoord is',Keuzewoord)
+	return Keuzewoord
+	
 def tree_yield(xml):
 	leaves = xml.xpath('descendant-or-self::node[@word]')
 	words = []
 	for l in leaves :
 		words.append(l.attrib["word"])
 	return " ".join(words)	
-			
+	
+
+def findproperty(searchwordlist):
+	wie_wat_dictionary = {
+        'prop-nl:volgende': ["aankomende","volgende","komende","eerstvolgende","na"],
+        'prop-nl:vorige': ["vorige","voorgaand","laatste"],
+        'prop-nl:locatie': ["baan", "locatie"],
+        'prop-nl:debuut': ["debuut", "eerste professionele wedstrijd"],
+        'prop-nl:bijnaam': ["bijnaam", "nickname", "bijnamen"],
+        'prop-nl:onderdeel': ["stok","onderdeel", "specialisatie","sport"],
+        'prop-nl:naam': ["naam", "volledige naam", "namen"],
+        'prop-nl:motto': ["motto",""],
+        'prop-nl:wrman': ["wereldrecord"],
+        'prop-nl:landen': ["aantal"],
+        'foaf:homepage': ["website"],
+        'prop-nl:geboortestad': ["geboorteplaats"],
+        'prop-nl:rang': ["rang"],
+        'prop-nl:bijnamen': ["bijnamen"],
+        'prop-nl:vorigenamen': ["voormalige naam", "naam"],
+        'rdfs:comment': ["bekend"],
+        'prop-nl:sport': ["sporten", "aantal sporten"],
+        'prop-nl:lengte': ["lengte"],
+        'prop-nl:discipline':["sport","soort","discipline", "olympische-sportdiscipline"],
+        'prop-nl:olympischKampioen': ["olympische spelen", "Olympische Spelen","snelste"],
+        'prop-nl:opening': ["startdatum"],
+        'prop-nl:organisator': ["organisator","georganiseerd","organiseren","organiseert"],
+        'prop-nl:eerste': ["eerste", "moderne"],
+        'prop-nl:atleten': ["atleten","deelnemende atleten", "deelnemers"],
+        'prop-nl:soort': ["soort"],
+        'prop-nl:vlaggendrager': ["vlaggendrager","vlagdragers", "vlaggendragers","vlag"],
+        'prop-nl:opener': ["geopend", "opening","opende"],
+        'prop-nl:coach': ["trainer","coach"],
+        'prop-nl:bondscoach': ["bondscoach","coach"],
+        'prop-nl:vlam': ["vlam","vlamdragers","fakkel","droegen", "vuur","fakkeldragers","toorts"],
+        'dcterms:subject': ["kampioen"],
+        'prop-nl:voorzitter': ["voorzitter","topman","president"],
+        'prop-nl:topscorer': ["topscorer"],
+        'prop-nl:goudNaam': ["gewonnen","goud","gouden"],
+        'dbpedia-owl:currentWorldChampion': ["wereldrecordhouders","wereldkampioenen","wereldkampioen","huidige","huidig"],
+        'prop-nl:eed': ["eed"],
+        'prop-nl:presentatie': ["presentatoren"],
+        'prop-nl:architect': ["ontwierp "],
+        'prop-nl:zilverNaam': ["zilver", "zilveren"],
+        'prop-nl:referee': ["scheidsrechters","scheidsrechter"]
+    }
+	for searchword in searchwordlist:
+		for property,words in wie_wat_dictionary.items():
+			for word in wie_wat_dictionary[property]:
+				if searchword == word:
+					propertylist = []
+					propertylist.append(property)
+	print('Dit is de propertylist:',propertylist)
+	return propertylist		
 		
 def create_and_fire_query(stringY,Proplist):
+	propertieslist = findproperty(Proplist)
 	sparql = SPARQLWrapper("http://nl.dbpedia.org/sparql")	
 	File=open('pairCounts')
 	maxlist, answerlist,urllist=[], [], []
@@ -192,60 +268,19 @@ def create_and_fire_query(stringY,Proplist):
 	
 	for link in urllist:
 		print(link)
-		for X in Proplist:
+		for item in propertieslist:					
+			sparql.setQuery("""
+			SELECT ?antwoord
+			WHERE {
+			<"""+link+"""> """+ item + """ ?antwoord.
+			} """)
 		
-			if X == "startdatum" or X=="begindatum" or X=="begonnen" or X=="beginnen":
-				prop="dbpedia-owl:startDate"
-				
-			elif X == "plaats" or X=="locatie" or X=="plek" or X=="Waar":
-				prop="dbpedia-owl:location"
-				
-			elif X == "lengte" or X=="hoogte" or X=="grootte" or X=="lang":
-				prop="prop-nl:lengte"
-				
-			elif X == "coach":
-				prop="prop-nl:bondscoach"	
-				
-			elif X == "trainer" or X=="oefenmeester" or X=="leermeester" or X=="getraind":
-				prop="prop-nl:trainer"
-				
-			elif X == "coach":
-				prop="prop-nl:bondscoach"
-			
-			elif X == "motto" or X=="spreuk" or X=="slogan" or X=="slagzin" or X=="leus" or X=="leuze" or X=="kernspreuk":
-				prop="prop-nl:motto"
-
-			elif X == "sluiting" or X=="einddatum" or X=="sluitdatum" or X=="eind" or X=="sloten":
-				prop="dbpedia-owl:endDate"		
-				
-			elif X == "gewicht" or X=="massa" or X=="zwaarte" or X=="zwaar":
-				prop="prop-nl:gewicht"
-				
-			elif X == "bijnaam" or X=="alias" or X=="nickname" or X=="bijnamen":
-				prop="prop-nl:bijnaam"
-				
-			elif X == "onderdeel" or X=="discipline" or X=="gebied" or X=="sectie" or X=="domein" or X=="vakgebied":
-				prop="prop-nl:onderdeel"
-				
-			elif X == "geboorteplaats" or X == "bakermat" or X == "geboren" or X == "Waar" or X== "voorzitter":
-				prop="prop-nl:geboorteplaats"
-				
-			elif X == "stadion":
-				prop="prop-nl:naamStadion"							
-						
-		sparql.setQuery("""
-		SELECT ?antwoord
-		WHERE {
-		<"""+link+"""> """+ prop + """ ?antwoord.
-		} """)
-		
-		sparql.setReturnFormat(JSON)
-		results = sparql.query().convert()
-		print(results)
-		for result in results["results"]["bindings"]:
-			for arg in result :
-				answer = arg + " : " + result[arg]["value"]
-				answerlist.append(answer)
+			sparql.setReturnFormat(JSON)
+			results = sparql.query().convert()
+			for result in results["results"]["bindings"]:
+				for arg in result :
+					answer = arg + " : " + result[arg]["value"]
+					answerlist.append(answer)
 		
 	return answerlist
 					

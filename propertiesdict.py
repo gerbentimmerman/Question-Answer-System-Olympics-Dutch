@@ -32,7 +32,6 @@ def wie_wat_dictionary(eigenschap):
         'prop-nl:atleten': ["atleten","deelnemende atleten", "deelnemers"],
         'prop-nl:soort': ["soort"],
         'prop-nl:vlaggendrager': ["vlaggendrager","vlagdragers", "vlaggendragers","vlag"],
-        #####################################################################
         'prop-nl:opener': ["geopend", "opening","opende"],
         'prop-nl:coach': ["trainer","coach"],
         'prop-nl:bondscoach': ["bondscoach","coach"],
@@ -51,7 +50,8 @@ def wie_wat_dictionary(eigenschap):
     }
 	
 
-    wanneer= {
+def wanneer_dictionary(eigenschap):
+    wanneer_dictionary = {
 		'prop-nl:eerste': ["eerste"],
 		'prop-nl:geboortedatum': ["geboren"],
 		'prop-nl:vorige': ["vorige","laatste","voor"],
@@ -64,7 +64,8 @@ def wie_wat_dictionary(eigenschap):
 
     }
     
-    waar_in_dicationary = {
+def waar_in_dictionary(eigenschap):
+    waar_in_dictionary = {
         'prop-nl:eerste': ["eerste","eerst"],
         'prop-nl:geboortedatum': ["geboren"],
         'prop-nl:vorige': ["vorige","laatste","voor","laatst","voorgaand"],
@@ -84,14 +85,13 @@ def wie_wat_dictionary(eigenschap):
     }
 
 def findproperty(searchwordlist):
-    for searchword in searchwordlist:
-        for property,words in wie_wat_dictionary.items():
-            for word in wie_wat_dictionary[property]:
-                if searchword == word:
-                    propertylist = []
-                    propertylist.append(property)
-                    return propertylist
-
+	for searchword in searchwordlist:
+		for property,words in wie_wat_dictionary.items():
+			for word in wie_wat_dictionary[property]:
+				if searchword == word:
+					propertylist = []
+					propertylist.append(property)
+	return propertylist
 
 if __name__ == '__main__':
     main(sys.argv)
