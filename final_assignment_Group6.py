@@ -145,22 +145,25 @@ def returnKeuzewoord(line):
 	line = line.rstrip()
 	xml = alpino_parse(line)
 	names = xml.xpath('//node[@rel="whd"]')
-	for name in names :
-		Keuzewoordlist = tree_yield(name).split()
-	if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
-		Keuzewoord = 'wanneer'
-	elif 'Wat' in Keuzewoordlist or 'wat' in Keuzewoordlist:
-		Keuzewoord = 'wat'
-	elif 'Wie' in Keuzewoordlist or 'wie' in Keuzewoordlist:
-		Keuzewoord = 'wie'
-	elif 'Welk' in Keuzewoordlist or 'welk' in Keuzewoordlist or 'Welke' in Keuzewoordlist or 'welke' in Keuzewoordlist:
-		Keuzewoord = 'welke'
-	elif 'Waar' in Keuzewoordlist or 'waar' in Keuzewoordlist:
-		Keuzewoord = 'waar'
-	elif 'Hoe' in Keuzewoordlist or 'hoe' in Keuzewoordlist:
-		Keuzewoord = 'hoe' 
-	elif 'Hoeveel' in Keuzewoordlist or 'hoeveel' in Keuzewoordlist:
-		Keuzewoord = 'hoeveel'
+	if names == []:
+		print('Geen vraagwoord gevonden!')
+	else:
+		for name in names :
+			Keuzewoordlist = tree_yield(name).split()
+		if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
+			Keuzewoord = 'wanneer'
+		elif 'Wat' in Keuzewoordlist or 'wat' in Keuzewoordlist:
+			Keuzewoord = 'wat'
+		elif 'Wie' in Keuzewoordlist or 'wie' in Keuzewoordlist:
+			Keuzewoord = 'wie'
+		elif 'Welk' in Keuzewoordlist or 'welk' in Keuzewoordlist or 'Welke' in Keuzewoordlist or 'welke' in Keuzewoordlist:
+			Keuzewoord = 'welke'
+		elif 'Waar' in Keuzewoordlist or 'waar' in Keuzewoordlist:
+			Keuzewoord = 'waar'
+		elif 'Hoe' in Keuzewoordlist or 'hoe' in Keuzewoordlist:
+			Keuzewoord = 'hoe' 
+		elif 'Hoeveel' in Keuzewoordlist or 'hoeveel' in Keuzewoordlist:
+			Keuzewoord = 'hoeveel'
 	return Keuzewoord
 	
 def tree_yield(xml):
@@ -223,6 +226,7 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 	
 	for link in urllist:
 		for item in propertieslist:	
+			print(link)
 			print(item)	
 			sparql.setQuery("""
 			SELECT ?antwoord
