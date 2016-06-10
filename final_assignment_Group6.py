@@ -11,6 +11,7 @@ import sys
 from lxml import etree
 from SPARQLWrapper import SPARQLWrapper, JSON
 import wikipedia
+import propertiesdict
 
 def alpino_parse(sent, host='zardoz.service.rug.nl', port=42424):
 	s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -62,7 +63,8 @@ def main(argv):
 		#print(zin[1])
 		stringY=returnName(line) #zin[1]
 		Proplist=returnProp(line) #zin[1]
-		answer = create_and_fire_query(stringY,Proplist)
+		Keuzewoord = returnKeuzewoord(line)
+		answer = create_and_fire_query(stringY,Proplist,Keuzewoord)
 		print(answer)
 
 #def kiesfuncties():
@@ -100,7 +102,6 @@ def returnName(line): #wie/wat vragen
 	stringY4=stringY3.rstrip()
 	stringY5=stringY4.replace("het ","")
 	stringY6=stringY5.replace("de ","")
-	print(stringY6)
 	return stringY6
 	
 	
@@ -129,7 +130,6 @@ def returnName2(line): #Wanneer of sindswanneer
 	stringY4=stringY3.rstrip()
 	stringY5=stringY4.replace("het ","")
 	stringY6=stringY4.replace("de ","")
-	print(stringY6)
 	return stringY6	
 	
 def returnProp(line):
@@ -141,15 +141,46 @@ def returnProp(line):
 		Proplist.append(tree_yield(name))
 	return Proplist
 	
+def returnKeuzewoord(line):
+	line = line.rstrip()
+	xml = alpino_parse(line)
+	names = xml.xpath('//node[@rel="whd"]')
+	for name in names :
+		Keuzewoordlist = tree_yield(name).split()
+	if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
+		Keuzewoord = 'wanneer'
+	elif 'Wat' in Keuzewoordlist or 'wat' in Keuzewoordlist:
+		Keuzewoord = 'wat'
+	elif 'Wie' in Keuzewoordlist or 'wie' in Keuzewoordlist:
+		Keuzewoord = 'wie'
+	elif 'Welk' in Keuzewoordlist or 'welk' in Keuzewoordlist or 'Welke' in Keuzewoordlist or 'welke' in Keuzewoordlist:
+		Keuzewoord = 'welke'
+	elif 'Waar' in Keuzewoordlist or 'waar' in Keuzewoordlist:
+		Keuzewoord = 'waar'
+	elif 'Hoe' in Keuzewoordlist or 'hoe' in Keuzewoordlist:
+		Keuzewoord = 'hoe' 
+	return Keuzewoord
+	
 def tree_yield(xml):
 	leaves = xml.xpath('descendant-or-self::node[@word]')
 	words = []
 	for l in leaves :
 		words.append(l.attrib["word"])
 	return " ".join(words)	
-			
+	
+
+def findproperty(searchwordlist,Keuzewoord):
+	rightdict = propertiesdict.dictfinder(Keuzewoord)
+	for searchword in searchwordlist:
+		for property,words in rightdict.items():
+			for word in rightdict[property]:
+				if searchword == word:
+					propertylist = []
+					propertylist.append(property)
+	return propertylist		
 		
-def create_and_fire_query(stringY,Proplist):
+def create_and_fire_query(stringY,Proplist,Keuzewoord):
+	propertieslist = findproperty(Proplist,Keuzewoord)
 	sparql = SPARQLWrapper("http://nl.dbpedia.org/sparql")	
 	File=open('pairCounts')
 	maxlist, answerlist,urllist=[], [], []
@@ -190,64 +221,19 @@ def create_and_fire_query(stringY,Proplist):
 		urllist.append(link)
 	
 	for link in urllist:
-		print(link)
-		print(Proplist)
-		for X in Proplist:
+		for item in propertieslist:		
+			sparql.setQuery("""
+			SELECT ?antwoord
+			WHERE {
+			<"""+link+"""> """+ item + """ ?antwoord.
+			} """)
 		
-			if X == "startdatum" or X=="begindatum" or X=="begonnen" or X=="beginnen":
-				prop="dbpedia-owl:startDate"
-				
-			elif X == "plaats" or X=="locatie" or X=="plek" or X=="Waar":
-				prop="dbpedia-owl:location"
-				
-			elif X == "lengte" or X=="hoogte" or X=="grootte" or X=="lang":
-				prop="prop-nl:lengte"
-				
-			elif X == "coach":
-				prop="prop-nl:bondscoach"	
-				
-			elif X == "trainer" or X=="oefenmeester" or X=="leermeester" or X=="getraind":
-				prop="prop-nl:trainer"
-				
-			elif X == "coach":
-				prop="prop-nl:bondscoach"
-			
-			elif X == "motto" or X=="spreuk" or X=="slogan" or X=="slagzin" or X=="leus" or X=="leuze" or X=="kernspreuk":
-				prop="prop-nl:motto"
-
-			elif X == "sluiting" or X=="einddatum" or X=="sluitdatum" or X=="eind" or X=="sloten":
-				prop="dbpedia-owl:endDate"		
-				
-			elif X == "gewicht" or X=="massa" or X=="zwaarte" or X=="zwaar":
-				prop="prop-nl:gewicht"
-				
-			elif X == "bijnaam" or X=="alias" or X=="nickname" or X=="bijnamen":
-				prop="prop-nl:bijnaam"
-				
-			elif X == "onderdeel" or X=="discipline" or X=="gebied" or X=="sectie" or X=="domein" or X=="vakgebied":
-				prop="prop-nl:onderdeel"
-				
-			elif X == "stadion":
-				prop="prop-nl:naam"
-				
-			elif X == "geboorteplaats" or X == "bakermat" or X == "geboren" or X == "Waar" or X== "voorzitter":
-				prop="prop-nl:geboorteplaats"
-				
-		print(prop)
-						
-		sparql.setQuery("""
-		SELECT ?antwoord
-		WHERE {
-		<"""+link+"""> """+ prop + """ ?antwoord.
-		} """)
-		
-		sparql.setReturnFormat(JSON)
-		results = sparql.query().convert()
-		#print(results)
-		for result in results["results"]["bindings"]:
-			for arg in result :
-				answer = arg + " : " + result[arg]["value"]
-				answerlist.append(answer)
+			sparql.setReturnFormat(JSON)
+			results = sparql.query().convert()
+			for result in results["results"]["bindings"]:
+				for arg in result :
+					answer = arg + " : " + result[arg]["value"]
+					answerlist.append(answer)
 		
 	return answerlist
 					
