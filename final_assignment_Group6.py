@@ -10,6 +10,7 @@ import socket
 import sys
 from lxml import etree
 from SPARQLWrapper import SPARQLWrapper, JSON
+import wikipedia
 
 def alpino_parse(sent, host='zardoz.service.rug.nl', port=42424):
 	s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -59,7 +60,7 @@ def main(argv):
 	for line in sys.stdin:
 		#zin=line.split("\t")
 		#print(zin[1])
-		stringY=returnName2(line) #zin[1]
+		stringY=returnName(line) #zin[1]
 		Proplist=returnProp(line) #zin[1]
 		answer = create_and_fire_query(stringY,Proplist)
 		print(answer)
@@ -73,9 +74,7 @@ def main(argv):
 	#//node[ @postag="BW()" and @word="Hoe"] hoe zinnen
 			
 def returnName(line): #wie/wat vragen
-	Ylist=[]
-	Ylist2=[]
-	Ylist3=[]
+	Ylist, Ylist2, Ylist3, Ylist4=[],[],[],[]
 	line = line.rstrip()
 	xml = alpino_parse(line)
 	names = xml.xpath('//node[@spectype="deeleigen"] ')
@@ -85,6 +84,11 @@ def returnName(line): #wie/wat vragen
 		for name in names3:	
 			Ylist3.append(tree_yield(name))
 		stringY3= ' '.join(Ylist3)
+		if names3==[]:
+			names4=xml.xpath('//node[ @rel="su"]')
+			for name in names4:	
+				Ylist4.append(tree_yield(name))
+			stringY3= ' '.join(Ylist4)
 	else:			
 		for name in names:
 			Ylist.append(tree_yield(name))
@@ -148,67 +152,102 @@ def tree_yield(xml):
 def create_and_fire_query(stringY,Proplist):
 	sparql = SPARQLWrapper("http://nl.dbpedia.org/sparql")	
 	File=open('pairCounts')
-	maxlist=[]
+	maxlist, answerlist,urllist=[], [], []
 	for line in File:
 		elements=line.split("\t")
 		if stringY == elements[0]:
 			maxlist.append([elements[0],elements[1],elements[2].rstrip("\n")])
 	maxlist.sort(key=lambda x: int(x[2]), reverse=True)
 	if maxlist == []:
-		sys.exit("Error!, "+stringY+" wordt niet herkend door DBpedia")
+		try:
+			wikipedia.set_lang("nl")
+			wikisearch=wikipedia.search(stringY)
+			for item in range(0,2):
+				wikipage = wikipedia.page(wikisearch[item])
+				url = wikipage.url
+				answer = wikipage.title
+				dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
+				urllist.append(dblink)
+
+		#except wikipedia.exceptions.DisambiguationError as error:
+			#link=url[0]
+			#urllist.append(link)	
+		except wikipedia.exceptions.WikipediaException as error:
+			urlstring=stringY6.replace(" ","_")
+			link="http://nl.dbpedia.org/page/"+urlstring
+			urllist.append(link)			
+		except IndexError:
+			wikipage = wikipedia.page(stringY)
+			url = wikipage.url
+			dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
+			urllist.append(dblink)
+		except:
+			urlstring=stringY6.replace(" ","_")
+			link="http://nl.dbpedia.org/page/"+urlstring
+			urllist.append(link)					
+				
 	else:	
 		link=maxlist[0][1]
+		urllist.append(link)
+	
+	for link in urllist:
+		print(link)
+		for X in Proplist:
 		
-	for X in Proplist:
-	
-		if X == "startdatum" or X=="begindatum" or X=="begonnen" or X=="beginnen":
-			prop="dbpedia-owl:startDate"
+			if X == "startdatum" or X=="begindatum" or X=="begonnen" or X=="beginnen":
+				prop="dbpedia-owl:startDate"
+				
+			elif X == "plaats" or X=="locatie" or X=="plek" or X=="Waar":
+				prop="dbpedia-owl:location"
+				
+			elif X == "lengte" or X=="hoogte" or X=="grootte" or X=="lang":
+				prop="prop-nl:lengte"
+				
+			elif X == "coach":
+				prop="prop-nl:bondscoach"	
+				
+			elif X == "trainer" or X=="oefenmeester" or X=="leermeester" or X=="getraind":
+				prop="prop-nl:trainer"
+				
+			elif X == "coach":
+				prop="prop-nl:bondscoach"
 			
-		elif X == "plaats" or X=="locatie" or X=="plek" or X=="Waar":
-			prop="dbpedia-owl:location"
-			
-		elif X == "lengte" or X=="hoogte" or X=="grootte" or X=="lang":
-			prop="prop-nl:lengte"
-			
-		elif X == "coach":
-			prop="prop-nl:bondscoach"	
-			
-		elif X == "trainer" or X=="oefenmeester" or X=="leermeester" or X=="getraind":
-			prop="prop-nl:trainer"
-			
-		elif X == "coach":
-			prop="prop-nl:bondscoach"
-   		
-		elif X == "motto" or X=="spreuk" or X=="slogan" or X=="slagzin" or X=="leus" or X=="leuze" or X=="kernspreuk":
-			prop="prop-nl:motto"
+			elif X == "motto" or X=="spreuk" or X=="slogan" or X=="slagzin" or X=="leus" or X=="leuze" or X=="kernspreuk":
+				prop="prop-nl:motto"
 
-		elif X == "sluiting" or X=="einddatum" or X=="sluitdatum" or X=="eind" or X=="sloten":
-			prop="dbpedia-owl:endDate"		
-			
-		elif X == "gewicht" or X=="massa" or X=="zwaarte" or X=="zwaar":
-			prop="prop-nl:gewicht"
-			
-		elif X == "bijnaam" or X=="alias" or X=="nickname":
-			prop="prop-nl:bijnaam"
-			
-		elif X == "onderdeel" or X=="discipline" or X=="gebied" or X=="sectie" or X=="domein" or X=="vakgebied":
-			prop="prop-nl:onderdeel"
-			
-		elif X == "geboorteplaats" or X == "bakermat" or X == "geboren" or X == "Waar":
-			prop="prop-nl:geboorteplaats"						
-									
-	sparql.setQuery("""
-	SELECT ?antwoord
-	WHERE {
-	<"""+link+""">"""+ prop + """ ?antwoord.
-	} """)
-	
-	sparql.setReturnFormat(JSON)
-	results = sparql.query().convert()
-	for result in results["results"]["bindings"]:
-		for arg in result :
-			answer = arg + " : " + result[arg]["value"]
-			return answer
+			elif X == "sluiting" or X=="einddatum" or X=="sluitdatum" or X=="eind" or X=="sloten":
+				prop="dbpedia-owl:endDate"		
+				
+			elif X == "gewicht" or X=="massa" or X=="zwaarte" or X=="zwaar":
+				prop="prop-nl:gewicht"
+				
+			elif X == "bijnaam" or X=="alias" or X=="nickname" or X=="bijnamen":
+				prop="prop-nl:bijnaam"
+				
+			elif X == "onderdeel" or X=="discipline" or X=="gebied" or X=="sectie" or X=="domein" or X=="vakgebied":
+				prop="prop-nl:onderdeel"
+				
+			elif X == "geboorteplaats" or X == "bakermat" or X == "geboren" or X == "Waar" or X== "voorzitter":
+				prop="prop-nl:geboorteplaats"
+				
+			elif X == "stadion":
+				prop="prop-nl:naamStadion"							
+						
+		sparql.setQuery("""
+		SELECT ?antwoord
+		WHERE {
+		<"""+link+"""> """+ prop + """ ?antwoord.
+		} """)
+		
+		sparql.setReturnFormat(JSON)
+		results = sparql.query().convert()
+		print(results)
+		for result in results["results"]["bindings"]:
+			for arg in result :
+				answer = arg + " : " + result[arg]["value"]
+				answerlist.append(answer)
+		
+	return answerlist
 					
 if __name__ == "__main__":
 	main(sys.argv)
