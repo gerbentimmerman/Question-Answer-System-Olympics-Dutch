@@ -168,7 +168,6 @@ def create_and_fire_query(stringY,Proplist):
 				answer = wikipage.title
 				dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
 				urllist.append(dblink)
-
 		#except wikipedia.exceptions.DisambiguationError as error:
 			#link=url[0]
 			#urllist.append(link)	
@@ -192,6 +191,7 @@ def create_and_fire_query(stringY,Proplist):
 	
 	for link in urllist:
 		print(link)
+		print(Proplist)
 		for X in Proplist:
 		
 			if X == "startdatum" or X=="begindatum" or X=="begonnen" or X=="beginnen":
@@ -227,11 +227,13 @@ def create_and_fire_query(stringY,Proplist):
 			elif X == "onderdeel" or X=="discipline" or X=="gebied" or X=="sectie" or X=="domein" or X=="vakgebied":
 				prop="prop-nl:onderdeel"
 				
+			elif X == "stadion":
+				prop="prop-nl:naam"
+				
 			elif X == "geboorteplaats" or X == "bakermat" or X == "geboren" or X == "Waar" or X== "voorzitter":
 				prop="prop-nl:geboorteplaats"
 				
-			elif X == "stadion":
-				prop="prop-nl:naamStadion"							
+		print(prop)
 						
 		sparql.setQuery("""
 		SELECT ?antwoord
@@ -241,7 +243,7 @@ def create_and_fire_query(stringY,Proplist):
 		
 		sparql.setReturnFormat(JSON)
 		results = sparql.query().convert()
-		print(results)
+		#print(results)
 		for result in results["results"]["bindings"]:
 			for arg in result :
 				answer = arg + " : " + result[arg]["value"]
