@@ -168,7 +168,6 @@ def tree_yield(xml):
 		words.append(l.attrib["word"])
 	return " ".join(words)	
 	
-
 def findproperty(searchwordlist,Keuzewoord):
 	rightdict = propertiesdict.dictfinder(Keuzewoord)
 	for searchword in searchwordlist:
