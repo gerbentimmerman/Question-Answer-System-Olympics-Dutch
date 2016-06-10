@@ -106,6 +106,41 @@ def dictfinder(Keuzewoord):
 		'prop-nl:kampioenschappen of':["onderdelen"]
 	}
 	
+	welke_dictionary = {
+		'prop-nl:slagen' : ["zwemstijlen"],
+		'prop-nl:geboortestad' : ["stad", "dorp","plaats"],
+		'prop-nl:bijnaam' : ["bijnamen"],
+		'prop-nl:discipline' : ["discipline", "sport","disciplines","varianten"],
+		'prop-nl:positie' : ["positie"],
+		'prop-nl:plaats' : ["land","gehouden","spelen af", "locatie(s)","plek","stad","locaties","steden","plaats","stadje"],
+		'prop-nl:opening' : ["beginnen", "geopend", "opening", "datum","gestart", "begon", "opende"],
+		'prop-nl:eerste' : ["eerste", "eerst"],
+		'prop-nl:slagen' : ["zwemstijlen"],
+		'prop-nl:organisator' : ["georganiseerd", "organisatie"],
+		'prop-nl:evenementen' : ["evenement"],
+		'prop-nl:geboortedatum' : ["dag","datum","jaar"],
+		'prop-nl:specialisatie' : ["gespecialiseerd","specialisatie"],
+		'prop-nl:soort' : ["seizoen"],
+		'prop-nl:jaar' : ["jaar"],
+		'prop-nl:vlaggendrager' : ["vlaggendrager","vlaggendragers"],
+		'is dbpedia-owl:goldMedalist of:' ["won gouden medialle"],
+		'prop-nl:rugnummer' : ["rugnummer"],
+		'prop-nl:motto' : ["motto"],
+		'is prop-nl:jury of' : ["rol"],
+		'is dbpedia-owl:torchBearer of' : ["rol"],
+		'is dbpedia-owl:torchBearer of' : ["flame"],
+		'is prop-nl:olympischKampioen of' : ["Kampioen"],
+		'prop-nl:accommodatie' : ["stadions","accomodatie"],
+		'prop-nl:olympischespelen' : ["nam deel"],
+		'prop-nl:debuut' : ["debuut"],
+		'is prop-nl:coach of' : ["coached"],
+		'prop-nl:volgende' : ["volgende"],
+		'is dbpedia-owl:goldMedalist of' : ["gouden"],
+		'prop-nl:categorie' : ["sportcategorien"],
+		'prop-nl:vlam' : ["vuur"]
+	
+	}
+	
 	if Keuzewoord == 'wat' or Keuzewoord == 'wie':
 		return wie_wat_dictionary
 	elif Keuzewoord == 'wanneer':
@@ -114,6 +149,8 @@ def dictfinder(Keuzewoord):
 		return hoe_dictionary
 	elif Keuzewoord == 'hoeveel':
 		return hoeveel_dictionary
+	elif Keuzewoord == 'welke':
+		return welke_dictionary
 
 if __name__ == '__main__':
     main(sys.argv)
