@@ -137,7 +137,8 @@ def dictfinder(Keuzewoord):
 		'prop-nl:volgende' : ["volgende"],
 		'is dbpedia-owl:goldMedalist of' : ["gouden"],
 		'prop-nl:categorie' : ["sportcategorien"],
-		'prop-nl:vlam' : ["vuur"]
+		'prop-nl:vlam' : ["vuur"],
+		'prop-nl:gewicht' : ["gewicht"]
 	
 	}
 	
