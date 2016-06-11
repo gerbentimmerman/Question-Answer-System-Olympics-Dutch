@@ -8,33 +8,34 @@ def dictfinder(Keuzewoord):
 		'prop-nl:volgende': ["aankomende","volgende","komende","eerstvolgende","na"],
 		'prop-nl:vorige': ["vorige","voorgaand","laatste"],
 		'prop-nl:locatie': ["baan", "locatie"],
-		'prop-nl:debuut': ["debuut", "eerste professionele wedstrijd"],
+		'prop-nl:debuut': ["debuut", "eerste", "wedstrijd"],
 		'prop-nl:bijnaam': ["bijnaam", "nickname", "bijnamen"],
 		'prop-nl:onderdeel': ["stok","onderdeel", "specialisatie","sport"],
-		'prop-nl:naam': ["naam", "volledige naam", "namen"],
-		'prop-nl:motto': ["motto",""],
+		'prop-nl:naam': ["naam", "volledige", "namen"],
+		'prop-nl:motto': ["motto"],
 		'prop-nl:wrman': ["wereldrecord"],
 		'prop-nl:landen': ["aantal"],
 		'foaf:homepage': ["website"],
-		'prop-nl:geboorteplaats': ["geboorteplaats","geboorteplaats"],
+		'prop-nl:geboorteplaats': ["geboorteplaats"],
 		'prop-nl:rang': ["rang"],
 		'prop-nl:bijnamen': ["bijnamen"],
-		'prop-nl:vorigenamen': ["voormalige naam", "naam"],
+		'prop-nl:vorigenamen': ["voormalige", "naam"],
 		'rdfs:comment': ["bekend"],
-		'prop-nl:sport': ["sporten", "aantal sporten"],
+		'prop-nl:sport': ["sporten", "aantal"],
 		'prop-nl:lengte': ["lengte"],
 		'prop-nl:discipline':["sport","soort","discipline", "olympische-sportdiscipline"],
-		'prop-nl:olympischKampioen': ["olympische spelen", "Olympische Spelen","snelste"],
-		'prop-nl:opening': ["startdatum"],
+		'prop-nl:olympischKampioen': ["kampioen","snelste"],
+		'prop-nl:opening': ["startdatum", "start"],
+		'prop-nl:sluiting': ["sloten"],
 		'prop-nl:organisator': ["organisator","georganiseerd","organiseren","organiseert"],
 		'prop-nl:eerste': ["eerste", "moderne"],
-		'prop-nl:atleten': ["atleten","deelnemende atleten", "deelnemers"],
+		'prop-nl:atleten': ["atleten","deelnemende", "deelnemers"],
 		'prop-nl:soort': ["soort"],
 		'prop-nl:vlaggendrager': ["vlaggendrager","vlagdragers", "vlaggendragers","vlag"],
 		'prop-nl:opener': ["geopend", "opening","opende"],
-		'prop-nl:coach': ["coach"],
-		'prop-nl:trainer': ["trainer", "getraind"],
-		'prop-nl:bondscoach': ["bondscoach","coach"],
+		'prop-nl:coach': ["coach","trainer"],
+		'prop-nl:trainer': ["trainer", "getraind","coach"],
+		'prop-nl:bondscoach': ["bondscoach","coach","trainer"],
 		'prop-nl:vlam': ["vlam","vlamdragers","fakkel","droegen", "vuur","fakkeldragers","toorts"],
 		'dcterms:subject': ["kampioen"],
 		'prop-nl:voorzitter': ["voorzitter","topman","president"],
@@ -45,8 +46,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:presentatie': ["presentatoren"],
 		'prop-nl:architect': ["ontwierp "],
 		'prop-nl:zilverNaam': ["zilver", "zilveren"],
-		'prop-nl:referee': ["scheidsrechters","scheidsrechter"],
-
+		'prop-nl:referee': ["scheidsrechters","scheidsrechter"]
 	}
 	
 	wanneer_dictionary = {
@@ -62,9 +62,9 @@ def dictfinder(Keuzewoord):
 
 	}
 
-	waar_in_dictionary = {
+	waar_dictionary = {
 		'prop-nl:eerste': ["eerste","eerst"],
-		'prop-nl:geboortedatum': ["geboren"],
+		'prop-nl:geboortestad': ["geboren"],
 		'prop-nl:vorige': ["vorige","laatste","voor","laatst","voorgaand"],
 		'prop-nl:volgende': ["volgende","eerstvolgende","aankomende","komende","na"],
 		'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
@@ -154,6 +154,8 @@ def dictfinder(Keuzewoord):
 		return hoeveel_dictionary
 	elif Keuzewoord == 'welke':
 		return welke_dictionary
+	elif Keuzewoord == 'waar':
+		return waar_dictionary
 	else:
 		return wie_wat_dictionary	
 
