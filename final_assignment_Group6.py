@@ -136,7 +136,7 @@ def returnProp(line):
 	Proplist=[]
 	line = line.rstrip()
 	xml = alpino_parse(line)
-	names = xml.xpath('//node[@rel="hd"]')
+	names = xml.xpath('//node[@rel="hd" or @pos="adj" or @pos="noun" or @rel="mod" or @pt="tw" or @rel="svp"]')
 	for name in names :
 		Proplist.append(tree_yield(name))
 	return Proplist
