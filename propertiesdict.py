@@ -105,8 +105,8 @@ def dictfinder(Keuzewoord):
 		'prop-nl:kampioenschappen of':["onderdelen"],
 		'prop-nl:totaalDeelnemers':["deelnemers"],
 		'prop-nl:gewicht':["weegt","gewicht"]
-
-	
+	}
+		
 	welke_dictionary = {
 		'prop-nl:slagen' : ["zwemstijlen"],
 		'prop-nl:geboortestad' : ["stad", "dorp","plaats"],
