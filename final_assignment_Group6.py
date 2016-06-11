@@ -28,44 +28,36 @@ def alpino_parse(sent, host='zardoz.service.rug.nl', port=42424):
 		#print(bytes_received.decode(’utf-8’), file=sys.stderr)
 	xml = etree.fromstring(bytes_received)
 	return xml
-
-def print_example_queries():
-	print("Wanneer begonnen de Olympische Zomerspelen 2012?")
-	print("Wat is de lengte van Usain Bolt?")
-	print("Hoe lang is Usain Bolt?")
-	print("Hoe zwaar is Marleen Veldhuis?")
-	print("Op welke datum sloten de Olympische Zomerspelen 2012?")
-	print("Wie is de trainer van Epke Zonderland?")
-	print("Welk gewicht heeft Henk Grol?")
-	print("Aan welk onderdeel neemt Henk Grol deel?")
-	print("Door wie wordt Usain Bolt getraind?")
-	print("Wat is de geboorteplaats van Marleen Veldhuis?")
-	print("In welke plaats is Epke Zonderland geboren?\n")
 	
-def leesbestand():
-	f= open("test.txt", "r")
+def leesbestand(argv):
+	f= open(argv[1], "r")
 	filedata = f.read()	
 	newdata = filedata.replace(" spelen"," Spelen")
 	newdata2 = newdata.replace(" olympisch"," Olympisch")
 	newdata3 = newdata2.replace(" zomerspelen"," Zomerspelen")
 	newdata4 = newdata3.replace(" winterspelen"," Winterspelen")
-	ff = open("beteretest.txt",'w')
+	ff = open("verbeter.txt",'w')
 	ff.write(newdata4)
 	ff.close()
 	
 	
 def main(argv):
-	#leesbestand()
-	#f=open("beteretest.txt", "r")
-	print_example_queries()
-	for line in sys.stdin:
-		#zin=line.split("\t")
-		#print(zin[1])
-		stringY=returnName(line) #zin[1]
-		Proplist=returnProp(line) #zin[1]
-		Keuzewoord = returnKeuzewoord(line)
+	leesbestand(argv)
+	f=open("verbeter.txt", "r")
+	schrijf= open("output.txt", "w")
+	for line in f:
+		zin=line.split("\t")
+		ID=zin[0]
+		print(ID)
+		stringY=returnName(zin[1])
+		Proplist=returnProp(zin[1])
+		Keuzewoord = returnKeuzewoord(zin[1])
 		answer = create_and_fire_query(stringY,Proplist,Keuzewoord)
-		print(answer)
+		antwoordstring="\t".join(answer)
+		Write=ID+"\t"+antwoordstring+"\n"
+		schrijf.write(Write)
+	schrijf.close()	
+			
 			
 def returnName(line):
 	Ylist, Ylist2, Ylist3, Ylist4, sportlist, landlist, NLlist=[],[],[],[],[],[],[]
@@ -123,8 +115,7 @@ def returnName(line):
 			stringY6=stringsport
 		if stringLand != "":
 			stringY3=stringLand+" op de "+stringY+" van "+stringY2
-			stringY6=stringY3.rstrip()
-	print(stringY6)				
+			stringY6=stringY3.rstrip()			
 	return stringY6
 	
 			
@@ -141,9 +132,8 @@ def returnKeuzewoord(line):
 	line = line.rstrip()
 	xml = alpino_parse(line)
 	names = xml.xpath('//node[@rel="whd" or @pt="vnw"]')
-	for name in names :
+	for name in names:
 		Keuzewoordlist = tree_yield(name).split()
-	print(Keuzewoordlist)
 	if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
 		Keuzewoord = 'wanneer'
 	elif 'Wat' in Keuzewoordlist or 'wat' in Keuzewoordlist:
@@ -206,15 +196,17 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 			urlstring=stringY6.replace(" ","_")
 			link="http://nl.dbpedia.org/page/"+urlstring
 			urllist.append(link)			
-		except IndexError:
-			wikipage = wikipedia.page(stringY)
-			url = wikipage.url
-			dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
-			urllist.append(dblink)
+		#except IndexError:
+			#wikipage = wikipedia.page(stringY)
+			#url = wikipage.url
+			#dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
+			#urllist.append(dblink)
+		#except:
+			#urlstring=stringY6.replace(" ","_")
+			#link="http://nl.dbpedia.org/page/"+urlstring
+			#urllist.append(link)
 		except:
-			urlstring=stringY6.replace(" ","_")
-			link="http://nl.dbpedia.org/page/"+urlstring
-			urllist.append(link)					
+			pass						
 				
 	else:	
 		link=maxlist[0][1]
@@ -230,13 +222,11 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 			<"""+link+"""> """+ item + """ ?antwoord .
 			} """)
 			
-			print(item,link)
-
 			sparql.setReturnFormat(JSON)
 			results = sparql.query().convert()
 			for result in results["results"]["bindings"]:
 				for arg in result :
-					answer = arg + " : " + result[arg]["value"]
+					answer = result[arg]["value"]
 					answerlist.append(answer)
 					answerlist1 += answerlist
 	return list(set(answerlist1))
