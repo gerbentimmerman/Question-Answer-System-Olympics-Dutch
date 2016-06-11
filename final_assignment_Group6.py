@@ -144,7 +144,7 @@ def returnProp(line):
 def returnKeuzewoord(line):
 	line = line.rstrip()
 	xml = alpino_parse(line)
-	names = xml.xpath('//node[@rel="whd"]')
+	names = xml.xpath('//node[@rel="hd"]')
 	for name in names :
 		Keuzewoordlist = tree_yield(name).split()
 	if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
