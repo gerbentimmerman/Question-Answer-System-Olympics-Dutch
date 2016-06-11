@@ -14,7 +14,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:naam': ["naam", "volledige", "namen"],
 		'prop-nl:motto': ["motto"],
 		'prop-nl:wrman': ["wereldrecord"],
-		'prop-nl:landen': ["aantal"],
+		'prop-nl:landen': ["aantal","landen"],
 		'foaf:homepage': ["website"],
 		'prop-nl:geboorteplaats': ["geboorteplaats"],
 		'prop-nl:rang': ["rang"],
@@ -56,7 +56,8 @@ def dictfinder(Keuzewoord):
 		'prop-nl:volgende': ["volgende","eerstvolgende","aankomende","komende","na"],
 		'prop-nl:sluiting': ["sluiting","afsluiting","eindceremonie","einde","eind","eindigden"],
 		'prop-nl:opening': ["start","begin","begonnen","opening","beginnen"],
-		'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
+		'prop-nl:olympisch': ["Olympisch","olympisch","olympische"],
+		'prop-nl:paralympisch': ["paralympisch","paralympische","onderdeel"],
 		'prop-nl:overleden': ["overleden","overleden"],
 		'prop-nl:gesticht': ["gesticht"]
 
@@ -102,7 +103,9 @@ def dictfinder(Keuzewoord):
 		'prop-nl:evenementen':["sportevenementen","evenementen"],
 		'prop-nl:spelen':["Olympiade"],
 		'prop-nl:inwoners':["inwoners"],
-		'prop-nl:kampioenschappen of':["onderdelen"]
+		'prop-nl:kampioenschappen of':["onderdelen"],
+		'prop-nl:totaalDeelnemers':["deelnemers"]
+
 	}
 	
 	welke_dictionary = {

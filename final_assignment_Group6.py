@@ -66,19 +66,25 @@ def main(argv):
 		Keuzewoord = returnKeuzewoord(line)
 		answer = create_and_fire_query(stringY,Proplist,Keuzewoord)
 		print(answer)
-
-#def kiesfuncties():
-	#soortvraag= xml.xpath('//node[ @rel="whd"] ')
-	#if soortvraag =="Wanneer" or soortvraag == "Sinds wanneer":
-		
-	#if soortvraag =="Wie" or soortvraag =="Wat":
 			
-	#//node[ @postag="BW()" and @word="Hoe"] hoe zinnen
-			
-def returnName(line): #wie/wat vragen
-	Ylist, Ylist2, Ylist3, Ylist4=[],[],[],[]
+def returnName(line):
+	Ylist, Ylist2, Ylist3, Ylist4, sportlist, landlist, NLlist=[],[],[],[],[],[],[]
 	line = line.rstrip()
 	xml = alpino_parse(line)
+	sporten = xml.xpath('//node[@word="Worstelen" or @word="hoogspringen" or @word="basketbal" or @word="taekwondo" or @word="kogelstoten" or @word="korfbal" or @word="judo" or @word="boogschieten"]')
+	for sport in sporten:
+		sportlist.append(tree_yield(sport))
+	stringsport=' '.join(sportlist)
+	landen = xml.xpath('//node[@word="Hongarije" or @word="Nederland" or @word="denemarken" or @word="Oostenrijk" or @word="Canada" or @word="Sovjet-Unie" or @word="indonesie" or @word="China" or @word="jamaica" or @word="Griekenland"]')
+	NL = xml.xpath('//node[@word="Nederlandse" or @word="Nederlands" or @word="Nederlanders"]')
+	for land in NL:
+		NLlist.append(tree_yield(land))
+	stringNL=' '.join(NLlist)
+	for land in landen:
+		landlist.append(tree_yield(land))
+	stringLand=' '.join(landlist)
+	if stringNL != "":
+		stringLand="Nederland"
 	names = xml.xpath('//node[@spectype="deeleigen"] ')
 	names2= xml.xpath('//node[@neclass="year"]')
 	if names==[]:
@@ -86,52 +92,42 @@ def returnName(line): #wie/wat vragen
 		for name in names3:	
 			Ylist3.append(tree_yield(name))
 		stringY3= ' '.join(Ylist3)
+		stringY4=stringY3.rstrip()
+		stringY5=stringY4.replace("het ","")
+		stringY6=stringY5.replace("de ","")
+		if stringLand != "":
+			stringY3=stringLand+" op de "+stringY3
+			stringY6=stringY3.rstrip()
+		if stringsport != "":
+			stringY6=stringsport
 		if names3==[]:
 			names4=xml.xpath('//node[ @rel="su"]')
 			for name in names4:	
 				Ylist4.append(tree_yield(name))
 			stringY3= ' '.join(Ylist4)
+			stringY4=stringY3.rstrip()
+			stringY5=stringY4.replace("het ","")
+			stringY6=stringY5.replace("de ","")
 	else:			
 		for name in names:
 			Ylist.append(tree_yield(name))
 		for name in names2:
-			Ylist2.append(tree_yield(name))	
+			Ylist2.append(tree_yield(name))		
 		stringY= ' '.join(Ylist)
 		stringY2= ' '.join(Ylist2)
 		stringY3= stringY+" "+stringY2
-	stringY4=stringY3.rstrip()
-	stringY5=stringY4.replace("het ","")
-	stringY6=stringY5.replace("de ","")
+		stringY4=stringY3.rstrip()
+		stringY5=stringY4.replace("het ","")
+		stringY6=stringY5.replace("de ","")
+		if stringsport != "":
+			stringY6=stringsport
+		if stringLand != "":
+			stringY3=stringLand+" op de "+stringY+" van "+stringY2
+			stringY6=stringY3.rstrip()
+	print(stringY6)				
 	return stringY6
 	
-	
-	
-def returnName2(line): #Wanneer of sindswanneer
-	Ylist=[]
-	Ylist2=[]
-	Ylist3=[]
-	line = line.rstrip()
-	xml = alpino_parse(line)
-	names = xml.xpath('//node[@word="Worstelen" or @word="hoogspringen" or @word="basketbal" or @word="taekwondo" or @word="kogelstoten" or @word="korfbal" or @word="judo" or @word="boogschieten"]')
-	if names==[]:
-		names2=xml.xpath('//node[@spectype="deeleigen"]')
-		names3= xml.xpath('//node[@neclass="year"]')
-		for name in names2:
-			Ylist2.append(tree_yield(name))
-		for name in names3:	
-			Ylist3.append(tree_yield(name))
-		stringY= ' '.join(Ylist2)
-		stringY2= ' '.join(Ylist3)
-		stringY3= stringY+" "+stringY2	
-	else:			
-		for name in names:
-			Ylist.append(tree_yield(name))
-		stringY3= ' '.join(Ylist)		
-	stringY4=stringY3.rstrip()
-	stringY5=stringY4.replace("het ","")
-	stringY6=stringY4.replace("de ","")
-	return stringY6	
-	
+			
 def returnProp(line):
 	Proplist=[]
 	line = line.rstrip()
@@ -223,8 +219,6 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 	else:	
 		link=maxlist[0][1]
 		urllist.append(link)
-	print(urllist)
-	print(propertieslist)
 	answerlist1 = []
 	for link in urllist:
 		answerlist = []
@@ -235,6 +229,8 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 			WHERE {
 			<"""+link+"""> """+ item + """ ?antwoord .
 			} """)
+			
+			print(item,link)
 
 			sparql.setReturnFormat(JSON)
 			results = sparql.query().convert()
