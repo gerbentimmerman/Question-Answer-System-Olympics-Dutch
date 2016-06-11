@@ -109,6 +109,7 @@ def dictfinder(Keuzewoord):
 	welke_dictionary = {
 		'prop-nl:slagen' : ["zwemstijlen"],
 		'prop-nl:geboortestad' : ["stad", "dorp","plaats"],
+		'prop-nl:geboorteplaats' : ["stad", "dorp","plaats"],
 		'prop-nl:bijnaam' : ["bijnamen"],
 		'prop-nl:discipline' : ["discipline", "sport","disciplines","varianten"],
 		'prop-nl:positie' : ["positie"],
