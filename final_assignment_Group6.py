@@ -243,7 +243,7 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 					answer = arg + " : " + result[arg]["value"]
 					answerlist.append(answer)
 					answerlist1 += answerlist
-	return answerlist1
+	return list(set(answerlist1))
 
 
 
