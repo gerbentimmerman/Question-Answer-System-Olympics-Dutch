@@ -56,10 +56,10 @@ def dictfinder(Keuzewoord):
 		'prop-nl:volgende': ["volgende","eerstvolgende","aankomende","komende","na"],
 		'prop-nl:sluiting': ["sluiting","afsluiting","eindceremonie","einde","eind","eindigden"],
 		'prop-nl:opening': ["start","begin","begonnen","opening","beginnen"],
-		'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
+		'prop-nl:olympisch': ["Olympisch","olympisch","olympische"],
+		'prop-nl:paralympisch': ["paralympisch","paralympische","onderdeel"],
 		'prop-nl:overleden': ["overleden","overleden"],
 		'prop-nl:gesticht': ["gesticht"]
-
 	}
 
 	waar_dictionary = {
@@ -103,6 +103,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:spelen':["Olympiade"],
 		'prop-nl:inwoners':["inwoners"],
 		'prop-nl:kampioenschappen of':["onderdelen"]
+		'prop-nl:gewicht':["weegt","gewicht"]
 	}
 	
 	welke_dictionary = {
