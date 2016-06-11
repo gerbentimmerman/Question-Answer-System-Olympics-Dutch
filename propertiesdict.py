@@ -102,7 +102,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:evenementen':["sportevenementen","evenementen"],
 		'prop-nl:spelen':["Olympiade"],
 		'prop-nl:inwoners':["inwoners"],
-		'prop-nl:kampioenschappen of':["onderdelen"]
+		'prop-nl:kampioenschappen of':["onderdelen"],
 		'prop-nl:gewicht':["weegt","gewicht"]
 	}
 	
