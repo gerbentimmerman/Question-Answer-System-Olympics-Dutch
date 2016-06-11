@@ -151,6 +151,8 @@ def dictfinder(Keuzewoord):
 		return hoeveel_dictionary
 	elif Keuzewoord == 'welke':
 		return welke_dictionary
+	else:
+		return wie_wat_dictionary	
 
 if __name__ == '__main__':
     main(sys.argv)
