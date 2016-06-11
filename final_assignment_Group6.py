@@ -4,7 +4,7 @@
 # Gerben Timmerman s2769670
 # Stan Snijders s2760002
 # Robert Veenhoven s2770199
-# Stan Korenromp s
+# Stan Korenromp s2717557
 
 import socket
 import sys
@@ -145,25 +145,20 @@ def returnKeuzewoord(line):
 	line = line.rstrip()
 	xml = alpino_parse(line)
 	names = xml.xpath('//node[@rel="whd"]')
-	if names == []:
-		print('Geen vraagwoord gevonden!')
-	else:
-		for name in names :
-			Keuzewoordlist = tree_yield(name).split()
-		if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
-			Keuzewoord = 'wanneer'
-		elif 'Wat' in Keuzewoordlist or 'wat' in Keuzewoordlist:
-			Keuzewoord = 'wat'
-		elif 'Wie' in Keuzewoordlist or 'wie' in Keuzewoordlist:
-			Keuzewoord = 'wie'
-		elif 'Welk' in Keuzewoordlist or 'welk' in Keuzewoordlist or 'Welke' in Keuzewoordlist or 'welke' in Keuzewoordlist:
-			Keuzewoord = 'welke'
-		elif 'Waar' in Keuzewoordlist or 'waar' in Keuzewoordlist:
-			Keuzewoord = 'waar'
-		elif 'Hoe' in Keuzewoordlist or 'hoe' in Keuzewoordlist:
-			Keuzewoord = 'hoe' 
-		elif 'Hoeveel' in Keuzewoordlist or 'hoeveel' in Keuzewoordlist:
-			Keuzewoord = 'hoeveel'
+	for name in names :
+		Keuzewoordlist = tree_yield(name).split()
+	if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
+		Keuzewoord = 'wanneer'
+	elif 'Wat' in Keuzewoordlist or 'wat' in Keuzewoordlist:
+		Keuzewoord = 'wat'
+	elif 'Wie' in Keuzewoordlist or 'wie' in Keuzewoordlist:
+		Keuzewoord = 'wie'
+	elif 'Welk' in Keuzewoordlist or 'welk' in Keuzewoordlist or 'Welke' in Keuzewoordlist or 'welke' in Keuzewoordlist:
+		Keuzewoord = 'welke'
+	elif 'Waar' in Keuzewoordlist or 'waar' in Keuzewoordlist:
+		Keuzewoord = 'waar'
+	elif 'Hoe' in Keuzewoordlist or 'hoe' in Keuzewoordlist:
+		Keuzewoord = 'hoe' 
 	return Keuzewoord
 	
 def tree_yield(xml):
@@ -187,7 +182,7 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 	propertieslist = findproperty(Proplist,Keuzewoord)
 	sparql = SPARQLWrapper("http://nl.dbpedia.org/sparql")	
 	File=open('pairCounts')
-	maxlist, answerlist,urllist=[], [], []
+	maxlist,urllist=[], []
 	for line in File:
 		elements=line.split("\t")
 		if stringY == elements[0]:
@@ -201,7 +196,7 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 				wikipage = wikipedia.page(wikisearch[item])
 				url = wikipage.url
 				answer = wikipage.title
-				dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
+				dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/resource/")
 				urllist.append(dblink)
 		#except wikipedia.exceptions.DisambiguationError as error:
 			#link=url[0]
@@ -223,25 +218,30 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 	else:	
 		link=maxlist[0][1]
 		urllist.append(link)
-	
+	print(urllist)
+	print(propertieslist)
+	answerlist1 = []
 	for link in urllist:
-		for item in propertieslist:	
-			print(link)
-			print(item)	
+		answerlist = []
+		for item in propertieslist:
+			sparql = SPARQLWrapper("http://nl.dbpedia.org/sparql")
 			sparql.setQuery("""
 			SELECT ?antwoord
 			WHERE {
-			<"""+link+"""> """+ item + """ ?antwoord.
+			<"""+link+"""> """+ item + """ ?antwoord .
 			} """)
-		
+
 			sparql.setReturnFormat(JSON)
 			results = sparql.query().convert()
 			for result in results["results"]["bindings"]:
 				for arg in result :
 					answer = arg + " : " + result[arg]["value"]
 					answerlist.append(answer)
-		
-	return answerlist
-					
+					answerlist1 += answerlist
+	return answerlist1
+
+
+
+
 if __name__ == "__main__":
 	main(sys.argv)
