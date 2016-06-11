@@ -158,7 +158,11 @@ def returnKeuzewoord(line):
 	elif 'Waar' in Keuzewoordlist or 'waar' in Keuzewoordlist:
 		Keuzewoord = 'waar'
 	elif 'Hoe' in Keuzewoordlist or 'hoe' in Keuzewoordlist:
-		Keuzewoord = 'hoe' 
+		Keuzewoord = 'hoe'
+	elif 'Hoeveel' in Keuzewoordlist or 'hoeveel' in Keuzewoordlist:
+		Keuzewoord = 'hoeveel'
+	else:
+		Keuzewoord= 'wie'
 	return Keuzewoord
 	
 def tree_yield(xml):
