@@ -46,7 +46,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:presentatie': ["presentatoren","presentator","presentatrice","presenteerde","presenteerden"],
 		'prop-nl:architect': ["ontwierp","designde","vorm","ontworpen","vormgegeven"],
 		'prop-nl:zilverNaam': ["zilver", "zilveren"],
-		'prop-nl:referee': ["scheidsrechters","scheidsrechter","scheids"]
+		'prop-nl:referee': ["scheidsrechters","scheidsrechter","scheids"],
 		'prop-nl:gewicht': ["gewicht"]
 	}
 	
