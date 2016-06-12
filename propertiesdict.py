@@ -47,6 +47,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:architect': ["ontwierp","designde","vorm","ontworpen","vormgegeven"],
 		'prop-nl:zilverNaam': ["zilver", "zilveren"],
 		'prop-nl:referee': ["scheidsrechters","scheidsrechter","scheids"]
+		'prop-nl:gewicht': ["gewicht"]
 	}
 	
 	wanneer_dictionary = {
