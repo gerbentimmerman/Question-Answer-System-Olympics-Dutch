@@ -132,6 +132,7 @@ def returnKeuzewoord(line):
 	line = line.rstrip()
 	xml = alpino_parse(line)
 	names = xml.xpath('//node[@rel="whd" or @pt="vnw"]')
+	Keuzewoordlist=[]
 	for name in names:
 		Keuzewoordlist = tree_yield(name).split()
 	if 'Wanneer' in Keuzewoordlist or 'wanneer' in Keuzewoordlist:
@@ -189,24 +190,15 @@ def create_and_fire_query(stringY,Proplist,Keuzewoord):
 				answer = wikipage.title
 				dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/resource/")
 				urllist.append(dblink)
-		#except wikipedia.exceptions.DisambiguationError as error:
-			#link=url[0]
-			#urllist.append(link)	
 		except wikipedia.exceptions.WikipediaException as error:
-			urlstring=stringY6.replace(" ","_")
+			urlstring=stringY.replace(" ","_")
 			link="http://nl.dbpedia.org/page/"+urlstring
 			urllist.append(link)			
-		#except IndexError:
-			#wikipage = wikipedia.page(stringY)
-			#url = wikipage.url
-			#dblink= url.replace("https://nl.wikipedia.org/wiki/","http://nl.dbpedia.org/page/")
-			#urllist.append(dblink)
-		#except:
-			#urlstring=stringY6.replace(" ","_")
-			#link="http://nl.dbpedia.org/page/"+urlstring
-			#urllist.append(link)
 		except:
-			pass						
+			urlstring=stringY.replace(" ","_")
+			link="http://nl.dbpedia.org/page/"+urlstring
+			urllist.append(link)
+						
 				
 	else:	
 		link=maxlist[0][1]

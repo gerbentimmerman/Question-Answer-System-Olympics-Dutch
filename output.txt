@@ -1,0 +1,610 @@
+s1879642-1	http://nl.dbpedia.org/resource/Olympische_Winterspelen_2018	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s1879642-2	
+s1879642-3	http://nl.dbpedia.org/resource/Vladimir_Poetin
+s1879642-4	1896
+s1879642-5	11028
+s1879642-6	
+s1879642-7	3
+s1879642-8	78
+s1879642-9	http://nl.dbpedia.org/resource/Jan_Bos	http://nl.dbpedia.org/resource/Rintje_Ritsma
+s1879642-10	http://nl.dbpedia.org/resource/Wayne_Gretzky
+s2212781-11	
+s2212781-12	1990-08-20
+s2212781-13	http://nl.dbpedia.org/resource/Europese_kampioenschappen_kortebaanzwemmen_2005
+s2212781-14	http://nl.dbpedia.org/resource/Vrije_slag	http://nl.dbpedia.org/resource/Rugslag_(wedstrijdslag)	http://nl.dbpedia.org/resource/Vlinderslag
+s2212781-15	1986-04-23	http://nl.dbpedia.org/resource/Oudeschoot
+s2212781-16	Sven the Man
+s2212781-17	1986-04-23
+s2212781-18	The Flying Dutchman	Epic Zonderland
+s2212781-19	173.0
+s2212781-20	http://nl.dbpedia.org/resource/Rekstok
+s2219832-21	http://nl.dbpedia.org/resource/Stuart_Pearce
+s2219832-22	http://nl.dbpedia.org/resource/Hink-stap-springen
+s2219832-23	
+s2219832-24	Alphonso Johnson	Benjamin Johnson
+s2219832-25	http://nl.dbpedia.org/resource/Aanvaller_(voetbal)
+s2219832-26	
+s2219832-27	Eduard Tsjaun
+s2219832-28	
+s2219832-29	1980
+s2219832-30	
+s2221543-31	
+s2221543-32	2016-08-05
+s2221543-33	
+s2221543-34	http://nl.dbpedia.org/resource/Irina_Rodnina	http://nl.dbpedia.org/resource/Vladislav_Tretiak
+s2221543-35	2871
+s2221543-36	1924
+s2221543-37	2014
+s2221543-38	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2221543-39	204
+s2221543-40	Inspire a Generation
+s2331373-41	Rio de Janeiro, Brazilië
+s2331373-42	2016-08-05
+s2331373-43	http://nl.dbpedia.org/resource/Wegwielrennen
+s2331373-44	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2331373-45	205	3531
+s2331373-46	Il Grillo
+s2331373-47	Koning George I
+s2331373-48	Inspire a Generation
+s2331373-49	Katie Kirk	Callum Airlie	Desiree Henry	Jordan Duckitt	Cameron MacRitchie	Aidan Reynolds	Adelle Tracey
+s2331373-50	
+s2344904-51	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2344904-52	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2344904-53	
+s2344904-54	
+s2344904-55	The Flying Dutchman	Epic Zonderland
+s2344904-56	http://nl.dbpedia.org/resource/Rekstok
+s2344904-57	
+s2344904-58	
+s2344904-59	1960
+s2344904-60	Zevenkamp
+s2440571-61	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2440571-62	2018
+s2440571-63	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s2440571-64	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s2440571-65	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2012
+s2440571-66	10500
+s2440571-67	http://nl.dbpedia.org/resource/Shelly-Ann_Fraser-Pryce	http://nl.dbpedia.org/resource/Usain_Bolt
+s2440571-68	
+s2440571-69	Tokio, Japan
+s2440571-70	Inspire a Generation
+s2478579-71	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2478579-72	
+s2478579-73	
+s2478579-74	1,89 m
+s2478579-75	
+s2478579-76	
+s2478579-77	82
+s2478579-78	
+s2478579-79	Kader Zitouni	Bruce George	Bertrand Billon	Isidore Assiene-Ambassa	Thierry Ariiotima	Norbert Hauata	Gerald Oiaka
+s2478579-80	78360
+s2493403-81	1896
+s2493403-82	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2493403-83	
+s2493403-84	2018
+s2493403-85	
+s2493403-86	http://nl.dbpedia.org/resource/Elizabeth_II_van_het_Verenigd_Koninkrijk
+s2493403-87	
+s2493403-88	
+s2493403-89	
+s2493403-90	
+s2542722-91	2008-08-24
+s2542722-92	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2542722-93	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2542722-94	Het Amerikaanse ijshockey team van 1980	President George W. Bush
+s2542722-95	2018
+s2542722-96	http://www.olympic.org/
+s2542722-97	
+s2542722-98	
+s2542722-99	
+s2542722-100	210
+s2546167-101	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2546167-102	
+s2546167-103	
+s2546167-104	
+s2546167-105	2016-08-21
+s2546167-106	302
+s2546167-107	
+s2546167-108	
+s2546167-109	
+s2546167-110	
+s2548798-111	1896
+s2548798-112	
+s2548798-113	
+s2548798-114	
+s2548798-115	
+s2548798-116	
+s2548798-117	
+s2548798-118	
+s2548798-119	The Flying Dutchman	Epic Zonderland
+s2548798-120	1,78 m
+s2550156-121	
+s2550156-122	Epke Jan Zonderland
+s2550156-123	26
+s2550156-124	
+s2550156-125	
+s2550156-126	http://nl.dbpedia.org/resource/Waterpolo
+s2550156-127	
+s2550156-128	1960	1976
+s2550156-129	
+s2550156-130	
+s2570785-131	
+s2570785-132	1896
+s2570785-133	11028	204
+s2570785-134	
+s2570785-135	
+s2570785-136	1900-05-14
+s2570785-137	Zwemmen
+s2570785-138	
+s2570785-139	
+s2570785-140	http://nl.dbpedia.org/resource/André_Bolhuis
+s2579006-141	http://nl.dbpedia.org/resource/Bob_de_Jong_(schaatser)	http://nl.dbpedia.org/resource/Jorien_ter_Mors
+s2579006-142	Rio de Janeiro, Brasilia, São Paulo, Belo Horizonte en Salvador
+s2579006-143	
+s2579006-144	
+s2579006-145	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2579006-146	1924
+s2579006-147	2016-09-07
+s2579006-148	241
+s2579006-149	
+s2579006-150	
+s2589540-151	
+s2589540-152	
+s2589540-153	1990-08-20
+s2589540-154	
+s2589540-155	1960
+s2589540-156	
+s2589540-157	The Flying Tomato
+s2589540-158	1896
+s2589540-159	
+s2589540-160	8	6
+s2591367-161	
+s2591367-162	
+s2591367-163	
+s2591367-164	13
+s2591367-165	
+s2591367-166	The Flying Dutchman	Epic Zonderland
+s2591367-167	
+s2591367-168	
+s2591367-169	Nationale Stadion van Peking
+s2591367-170	
+s2600358-171	204
+s2600358-172	
+s2600358-173	Sprint
+s2600358-174	
+s2600358-175	http://nl.dbpedia.org/resource/Bob_Bowman
+s2600358-176	http://nl.dbpedia.org/resource/Jan_Bos	http://nl.dbpedia.org/resource/Rintje_Ritsma
+s2600358-177	3
+s2600358-178	http://nl.dbpedia.org/resource/Alyson_Annan
+s2600358-179	
+s2600358-180	http://nl.dbpedia.org/resource/André_Bolhuis
+s2610833-181	
+s2610833-182	
+s2610833-183	Deutsches Stadion	Gianluigi Buffon
+s2610833-184	
+s2610833-185	2871
+s2610833-186	
+s2610833-187	
+s2610833-188	
+s2610833-189	
+s2610833-190	Marianne Vos
+s2614154-191	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2614154-192	
+s2614154-193	
+s2614154-194	
+s2614154-195	
+s2614154-196	
+s2614154-197	
+s2614154-198	
+s2614154-199	
+s2614154-200	http://nl.dbpedia.org/resource/Oudeschoot
+s2640635-201	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2640635-202	
+s2640635-203	1896-04-06
+s2640635-204	10500
+s2640635-205	2012-08-12
+s2640635-206	
+s2640635-207	
+s2640635-208	
+s2640635-209	2024
+s2640635-210	2016
+s2671492-211	
+s2671492-212	Katie Kirk	Callum Airlie	Desiree Henry	Jordan Duckitt	Cameron MacRitchie	Aidan Reynolds	Adelle Tracey
+s2671492-213	De Olympische Spelen zijn een internationale sportmanifestatie. Er doen duizenden atleten aan uiteenlopende sporten mee. De twee versies, de Zomerspelen en de Winterspelen, worden elk om de vier jaar gehouden. Ruim anderhalf jaar na de Zomerspelen, in het tweede kalenderjaar erna, zijn steeds de Winterspelen, vervolgens duurt het dus een kleine tweëneenhalf jaar tot de volgende Zomerspelen.De filosofie achter 'de Spelen' wordt uitgedragen door de 'Olympische Beweging'.
+s2671492-214	
+s2671492-215	
+s2671492-216	
+s2671492-217	
+s2671492-218	
+s2671492-219	7
+s2671492-220	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2674114-221	1896
+s2674114-222	2000-09-15
+s2674114-223	
+s2674114-224	
+s2674114-225	Rio de Janeiro, Brasilia, São Paulo, Belo Horizonte en Salvador
+s2674114-226	199
+s2674114-227	
+s2674114-228	
+s2674114-229	
+s2674114-230	
+s2678675-231	1924
+s2678675-232	
+s2678675-233	One World, One Dream
+s2678675-234	
+s2678675-235	
+s2678675-236	2018
+s2678675-237	
+s2678675-238	8
+s2678675-239	Sven the Man
+s2678675-240	http://nl.dbpedia.org/resource/Mark_Huizinga	http://nl.dbpedia.org/resource/Leontien_van_Moorsel
+s2702150-241	
+s2702150-242	
+s2702150-243	93.0
+s2702150-244	
+s2702150-245	http://nl.dbpedia.org/resource/Jillert_Anema
+s2702150-246	http://nl.dbpedia.org/resource/Sauwerd
+s2702150-247	The Coon	De Japanner uit Salland
+s2702150-248	
+s2702150-249	
+s2702150-250	http://nl.dbpedia.org/resource/Zeilen_(varen)
+s2714140-251	
+s2714140-252	10500
+s2714140-253	302
+s2714140-254	
+s2714140-255	
+s2714140-256	2018
+s2714140-257	
+s2714140-258	
+s2714140-259	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2008
+s2714140-260	
+s2723468-261	2016-08-05
+s2723468-262	
+s2723468-263	Los Angeles, Verenigde Staten
+s2723468-264	204
+s2723468-265	Katie Kirk	Callum Airlie	Desiree Henry	Jordan Duckitt	Cameron MacRitchie	Aidan Reynolds	Adelle Tracey
+s2723468-266	1896
+s2723468-267	
+s2723468-268	Katie Kirk	Callum Airlie	Desiree Henry	Jordan Duckitt	Cameron MacRitchie	Aidan Reynolds	Adelle Tracey
+s2723468-269	
+s2723468-270	
+s2726769-271	1,96 m
+s2726769-272	Sven the Man
+s2726769-273	http://nl.dbpedia.org/resource/Ashton_Eaton	http://nl.dbpedia.org/resource/Ganna_Melnitsjenko
+s2726769-274	
+s2726769-275	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2726769-276	1960	1976
+s2726769-277	26
+s2726769-278	
+s2726769-279	
+s2726769-280	1966-06-16
+s2732947-281	
+s2732947-282	Pyeongchang, Zuid-Korea
+s2732947-283	
+s2732947-284	
+s2732947-285	
+s2732947-286	
+s2732947-287	
+s2732947-288	
+s2732947-289	The Flying Dutchman	Epic Zonderland
+s2732947-290	
+s2748428-291	Rio de Janeiro, Brasilia, São Paulo, Belo Horizonte en Salvador
+s2748428-292	
+s2748428-293	
+s2748428-294	
+s2748428-295	Usain St. Leo Bolt
+s2748428-296	
+s2748428-297	Welcome Home
+s2748428-298	173.0
+s2748428-299	Zhang Yining
+s2748428-300	199
+s2760339-301	
+s2760339-302	
+s2760339-303	26
+s2760339-304	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2760339-305	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2760339-306	One World, One Dream
+s2760339-307	10500	204
+s2760339-308	10500
+s2760339-309	Inspire a Generation
+s2760339-310	2006-02-10
+s2761041-311	http://nl.dbpedia.org/resource/Olympische_Winterspelen_2018	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s2761041-312	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2012	http://nl.dbpedia.org/resource/Olympische_Winterspelen_2014
+s2761041-313	1,96 m
+s2761041-314	
+s2761041-315	roeien
+s2761041-316	
+s2761041-317	
+s2761041-318	discuswerpen, kogelstoten
+s2761041-319	
+s2761041-320	
+s2762927-321	1896
+s2762927-322	http://nl.dbpedia.org/resource/Li_Ning	http://nl.dbpedia.org/resource/Huang_Li_Pei
+s2762927-323	
+s2762927-324	
+s2762927-325	
+s2762927-326	2176	72
+s2762927-327	
+s2762927-328	
+s2762927-329	
+s2762927-330	
+s2764989-331	
+s2764989-332	1984-07-03
+s2764989-333	
+s2764989-334	
+s2764989-335	
+s2764989-336	http://nl.dbpedia.org/resource/Victoria_Pendleton	http://nl.dbpedia.org/resource/Grégory_Baugé	http://nl.dbpedia.org/resource/Usain_Bolt	http://nl.dbpedia.org/resource/Dafne_Schippers
+s2764989-337	
+s2764989-338	
+s2764989-339	
+s2764989-340	Thunderbolt, The Lightning Bolt
+s2767058-341	
+s2767058-342	
+s2767058-343	
+s2767058-344	429	20
+s2767058-345	
+s2767058-346	
+s2767058-347	
+s2767058-348	24	177
+s2767058-349	
+s2767058-350	
+s2769670-351	11028
+s2769670-352	
+s2769670-353	
+s2769670-354	
+s2769670-355	
+s2769670-356	
+s2769670-357	
+s2769670-358	
+s2769670-359	80
+s2769670-360	Cathy Freeman
+s2776758-361	Glen Mills
+s2776758-362	
+s2776758-363	http://nl.dbpedia.org/resource/Oudeschoot
+s2776758-364	
+s2776758-365	1,96 m
+s2776758-366	2018
+s2776758-367	http://nl.dbpedia.org/resource/Alpineskiën
+s2776758-368	2	1
+s2776758-369	http://nl.dbpedia.org/resource/Mark_Huizinga	http://nl.dbpedia.org/resource/Leontien_van_Moorsel
+s2776758-370	
+s2824221-371	2018
+s2824221-372	
+s2824221-373	
+s2824221-374	241
+s2824221-375	Inspire a Generation
+s2824221-376	http://nl.dbpedia.org/resource/Shelly-Ann_Fraser-Pryce	http://nl.dbpedia.org/resource/Usain_Bolt
+s2824221-377	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2012
+s2824221-378	
+s2824221-379	http://nl.dbpedia.org/resource/Patrick_Pearson
+s2824221-380	http://nl.dbpedia.org/resource/Patrick_Pearson
+s1816292-381	http://nl.dbpedia.org/resource/Olympische_Winterspelen_2018	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s1816292-382	
+s1816292-383	
+s1816292-384	
+s1816292-385	http://nl.dbpedia.org/resource/Categorie:Land	http://nl.dbpedia.org/resource/Categorie:Nederland
+s1816292-386	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2012	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s1816292-387	
+s1816292-388	
+s1816292-389	12400865
+s1816292-390	
+s2003325-391	http://nl.dbpedia.org/resource/Venlo_(stad)
+s2003325-392	Henry Schut	Sjoerd van Ramshorst	http://nl.dbpedia.org/resource/Herman_van_der_Zandt	http://nl.dbpedia.org/resource/Tom_Egbers	http://nl.dbpedia.org/resource/Mart_Smeets	http://nl.dbpedia.org/resource/Dione_de_Graaff	Jeroen Stomphorst	http://nl.dbpedia.org/resource/Gert_van_'t_Hof	http://nl.dbpedia.org/resource/Rivkah_op_het_Veld	http://nl.dbpedia.org/resource/Jack_van_Gelder	http://nl.dbpedia.org/resource/Gert_van_´t_Hof
+s2003325-393	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s2003325-394	1924
+s2003325-395	90
+s2003325-396	
+s2003325-397	14
+s2003325-398	http://nl.dbpedia.org/resource/Churandy_Martina
+s2003325-399	President Kostis Stephanopoulos
+s2003325-400	2000-09-15
+s2033593-401	
+s2033593-402	57	1423
+s2033593-403	http://nl.dbpedia.org/resource/Robyn_Perry
+s2033593-404	Inspire a Generation
+s2033593-405	http://nl.dbpedia.org/resource/Vladimir_Poetin
+s2033593-406	http://nl.dbpedia.org/resource/Irina_Rodnina	http://nl.dbpedia.org/resource/Vladislav_Tretiak
+s2033593-407	
+s2033593-408	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2033593-409	
+s2033593-410	The Dutch Dolphin	Hoogie	VDH
+s2329255-411	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2329255-412	
+s2329255-413	
+s2329255-414	
+s2329255-415	Amsterdam, Nederland
+s2329255-416	
+s2329255-417	
+s2329255-418	
+s2329255-419	
+s2329255-420	
+s2362503-421	
+s2362503-422	
+s2362503-423	
+s2362503-424	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2362503-425	President George W. Bush
+s2362503-426	78	2399
+s2362503-427	2006
+s2362503-428	Zoï Dimoschaki
+s2362503-429	
+s2362503-430	Nikolaos Kaklamanakis
+s2371502-431	
+s2371502-432	
+s2371502-433	
+s2371502-434	
+s2371502-435	
+s2371502-436	
+s2371502-437	2871
+s2371502-438	
+s2371502-439	
+s2371502-440	
+s2408791-441	2014
+s2408791-442	10500
+s2408791-443	
+s2408791-444	2018
+s2408791-445	
+s2408791-446	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2408791-447	http://nl.dbpedia.org/resource/Olympische_Winterspelen_2018	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s2408791-448	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2408791-449	2018
+s2408791-450	
+s2424800-451	Passion. Connected.
+s2424800-452	http://nl.dbpedia.org/resource/Elizabeth_II_van_het_Verenigd_Koninkrijk
+s2424800-453	6797	140
+s2424800-454	9
+s2424800-455	
+s2424800-456	2018-02-09
+s2424800-457	
+s2424800-458	
+s2424800-459	
+s2424800-460	1924
+s2478579-461	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2478579-462	
+s2478579-463	
+s2478579-464	1,89 m
+s2478579-465	
+s2478579-466	
+s2478579-467	82
+s2478579-468	
+s2478579-469	Kader Zitouni	Bruce George	Bertrand Billon	Isidore Assiene-Ambassa	Thierry Ariiotima	Norbert Hauata	Gerald Oiaka
+s2478579-470	78360
+s2499428-471	
+s2499428-472	
+s2499428-473	
+s2499428-474	http://nl.dbpedia.org/resource/Categorie:1897	http://nl.dbpedia.org/resource/Categorie:1912
+s2499428-475	
+s2499428-476	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2499428-477	http://nl.dbpedia.org/resource/Olympische_Jeugdzomerspelen_2014	http://nl.dbpedia.org/resource/Olympische_Jeugdzomerspelen_2010	WS 2012 in Innsbruck	http://nl.dbpedia.org/resource/Olympische_Jeugdwinterspelen_2012
+s2499428-478	(Olympische Zomerspelen)	Spelen van de Olympiade
+s2499428-479	
+s2499428-480	
+s2500523-481	
+s2500523-482	verspringen
+s2500523-483	
+s2500523-484	
+s2500523-485	
+s2500523-486	
+s2500523-487	
+s2500523-488	
+s2500523-489	
+s2500523-490	
+s2525119-491	2014
+s2525119-492	
+s2525119-493	
+s2525119-494	
+s2525119-495	
+s2525119-496	2000-10-01
+s2525119-497	http://nl.dbpedia.org/resource/André_Bolhuis
+s2525119-498	http://nl.dbpedia.org/resource/Adolf_Hitler
+s2525119-499	1924
+s2525119-500	
+s2542722-501	2008-08-24
+s2542722-502	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2542722-503	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2542722-504	Het Amerikaanse ijshockey team van 1980	President George W. Bush
+s2542722-505	2018
+s2542722-506	http://www.olympic.org/
+s2542722-507	
+s2542722-508	
+s2542722-509	
+s2542722-510	210
+s2575973-511	Inspire a Generation
+s2575973-512	Rio de Janeiro, Brazilië
+s2575973-513	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2575973-514	http://nl.dbpedia.org/resource/Irina_Rodnina	http://nl.dbpedia.org/resource/Vladislav_Tretiak
+s2575973-515	
+s2575973-516	http://nl.dbpedia.org/resource/Langlaufen
+s2575973-517	
+s2575973-518	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2575973-519	Zomer	Inspire a Generation
+s2575973-520	Katie Kirk	Callum Airlie	Desiree Henry	Jordan Duckitt	Cameron MacRitchie	Aidan Reynolds	Adelle Tracey
+s2580748-521	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2580748-522	
+s2580748-523	
+s2580748-524	
+s2580748-525	Inspire a Generation
+s2580748-526	
+s2580748-527	http://nl.dbpedia.org/resource/André_Bolhuis
+s2580748-528	
+s2580748-529	
+s2580748-530	http://nl.dbpedia.org/resource/Irina_Rodnina	http://nl.dbpedia.org/resource/Vladislav_Tretiak
+s2614154-531	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2614154-532	
+s2614154-533	
+s2614154-534	
+s2614154-535	
+s2614154-536	
+s2614154-537	
+s2614154-538	
+s2614154-539	
+s2614154-540	http://nl.dbpedia.org/resource/Oudeschoot
+s2615703-541	WS 1924 in Chamonix	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_1896
+s2615703-542	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2615703-543	http://www.olympic.org/
+s2615703-544	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2016
+s2615703-545	204
+s2615703-546	One World, One Dream
+s2615703-547	
+s2615703-548	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2012	http://nl.dbpedia.org/resource/Olympische_Winterspelen_2014
+s2615703-549	
+s2615703-550	Allround, 5000 en 10000 meter
+s2616602-551	10500
+s2616602-552	2016-08-05
+s2616602-553	
+s2616602-554	http://nl.dbpedia.org/resource/Elizabeth_II_van_het_Verenigd_Koninkrijk
+s2616602-555	http://nl.dbpedia.org/resource/Olympische_Zomerspelen_2012	http://nl.dbpedia.org/resource/Olympische_Winterspelen_2014
+s2616602-556	0
+s2616602-557	
+s2616602-558	
+s2616602-559	http://nl.dbpedia.org/resource/Voetbal
+s2616602-560	
+s2717557-561	
+s2717557-562	
+s2717557-563	
+s2717557-564	Seoel, Zuid-Korea
+s2717557-565	
+s2717557-566	
+s2717557-567	
+s2717557-568	
+s2717557-569	
+s2717557-570	
+s2759233-571	1924
+s2759233-572	
+s2759233-573	
+s2759233-574	2012
+s2759233-575	Welcome Home
+s2759233-576	
+s2759233-577	
+s2759233-578	
+s2759233-579	
+s2759233-580	
+s2760002-581	
+s2760002-582	http://nl.dbpedia.org/resource/Internationaal_Olympisch_Comité
+s2760002-583	
+s2760002-584	
+s2760002-585	
+s2760002-586	Passion. Connected.
+s2760002-587	WS 2012 in Innsbruck	http://nl.dbpedia.org/resource/Olympische_Jeugdzomerspelen_2010
+s2760002-588	http://nl.dbpedia.org/resource/Elizabeth_II_van_het_Verenigd_Koninkrijk
+s2760002-589	Katie Kirk	Callum Airlie	Desiree Henry	Jordan Duckitt	Cameron MacRitchie	Aidan Reynolds	Adelle Tracey
+s2760002-590	10651	199
+s2763443-591	Rio de Janeiro, Brazilië
+s2763443-592	241
+s2763443-593	Katie Kirk	Callum Airlie	Desiree Henry	Jordan Duckitt	Cameron MacRitchie	Aidan Reynolds	Adelle Tracey
+s2763443-594	
+s2763443-595	Koning Harald V
+s2763443-596	
+s2763443-597	
+s2763443-598	Zomer
+s2763443-599	6028
+s2763443-600	1924
+s2770199-601	"Hot. Cool. Yours."
+s2770199-602	
+s2770199-603	
+s2770199-604	46
+s2770199-605	(Olympische Zomerspelen)	Spelen van de Olympiade
+s2770199-606	1896
+s2770199-607	
+s2770199-608	kroonprins Haakon Magnus	http://nl.dbpedia.org/resource/Eigil_Nansen
+s2770199-609	http://nl.dbpedia.org/resource/Michaëlle_Jean
+s2770199-610	Pyeongchang, Zuid-Korea

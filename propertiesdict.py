@@ -68,9 +68,9 @@ def dictfinder(Keuzewoord):
 		'prop-nl:vorige': ["vorige","laatste","voor","laatst","voorgaand"],
 		'prop-nl:volgende': ["volgende","eerstvolgende","aankomende","komende","na"],
 		'prop-nl:olympisch': ["olympisch","paralympisch","olympische","paralympische"],
-		'dbpedia-owl:flagBearer of': ["vlaggendrager"],
-		'prop-nl:zilverNaam of': ["zilver","tweede"],
-		'prop-nl:goudNaam of': ["goud","eerste"],
+		'dbpedia-owl:flagBearer': ["vlaggendrager"],
+		'prop-nl:zilverNaam': ["zilver","tweede"],
+		'prop-nl:goudNaam': ["goud","eerste"],
 		'prop-nl:soort': ["seizoen"],
 		'prop-nl:jaar': ["jaar","jaartal","jaren","jaartallen"],
 		'prop-nl:discipline': ["sport","discipline","disciplines"],
@@ -102,7 +102,7 @@ def dictfinder(Keuzewoord):
 		'prop-nl:evenementen':["sportevenementen","evenementen"],
 		'prop-nl:spelen':["Olympiade"],
 		'prop-nl:inwoners':["inwoners"],
-		'prop-nl:kampioenschappen of':["onderdelen"],
+		'prop-nl:kampioenschappen':["onderdelen"],
 		'prop-nl:totaalDeelnemers':["deelnemers"],
 		'prop-nl:gewicht':["weegt","gewicht"]
 	}
