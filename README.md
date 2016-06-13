@@ -1,12 +1,10 @@
 Taaltechnologie Final Assignment
-Robert Veenhoven	s2770199
-Stan Snijders		s2760002
-Stan Korenromp	s2717557
-Gerben Timmerman 	s2769670
+* Robert Veenhoven	s2770199
+* Stan Snijders		s2760002
+* Stan Korenromp	s2717557
+* Gerben Timmerman 	s2769670
 
-
-Om ons programma te runnen zul je de volgende modules moeten installeren:
-
+Om ons programma te runnen zullen de volgende modules geïnstalleerd moeten worden:
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 import wikipedia
@@ -28,4 +26,3 @@ Dan kun je nu ons programma gaan runnen via het volgende commando:
 	python3 final_assignment_group6.py olympics_questions1.txt 
 
 Onze resultaten worden geschreven naar het bestand: 		output.txt
-
