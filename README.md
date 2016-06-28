@@ -1,8 +1,8 @@
 Taaltechnologie Final Assignment
-* Robert Veenhoven	s2770199
-* Stan Snijders		s2760002
-* Stan Korenromp	s2717557
-* Gerben Timmerman 	s2769670
+* Robert Veenhoven	
+* Stan Snijders		
+* Stan Korenromp	
+* Gerben Timmerman 	
 
 Om ons programma te runnen zullen de volgende modules geïnstalleerd moeten worden:
 
