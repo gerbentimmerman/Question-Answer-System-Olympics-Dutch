@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
 # Final Assignment Taaltechnologie
-# Gerben Timmerman s2769670
-# Stan Snijders s2760002
-# Robert Veenhoven s2770199
-# Stan Korenromp s2717557
+# Gerben Timmerman 
+# Stan Snijders 
+# Robert Veenhoven 
+# Stan Korenromp 
 
 import socket
 import sys
